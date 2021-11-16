@@ -56,15 +56,14 @@ void spoti_api::parseRecentTracks() {
 	Json::Value obj;
 
 	reader.parse(spotify_response, obj);
-	
+	recentSongs = "";
 	for(Json::Value::ArrayIndex i = 0; i != obj["items"].size(); i++) {
-		std::cout << "Song: " << obj["items"][i]["track"]["name"].asString() << std::endl;
-		recentSongs.push_back(obj["items"][i]["track"]["name"].asString());
+		recentSongs +=	"Song: " + obj["items"][i]["track"]["name"].asString();
 	}
 }
 
 
-void spoti_api::call() {
+std::string& spoti_api::call() {
 	struct curl_slist *headers;
 
   	headers = NULL;
@@ -89,6 +88,8 @@ void spoti_api::call() {
 	getRecentlyPlayedTracks();
 	
 	parseRecentTracks();
+	
+	return recentSongs;
 
 }
 

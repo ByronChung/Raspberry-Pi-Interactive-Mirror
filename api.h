@@ -2,23 +2,20 @@
 #define API_H
 
 #include <iostream>
-#include <boost/asio.hpp>
-#include <boost/bind.hpp>
-#include <boost/date_time/posix_time/posix_time.hpp>
 #include <string>
 #include <curl/curl.h>
 #include <jsoncpp/json/json.h>
+#include "api_interface.h"
 
-class api {
+class api: public api_interface {
 	public:
-		api(boost::asio::io_service& io);
+		api();
 		~api() = default;
 		static size_t writefunc(void *ptr, size_t size, size_t nmemb, std::string *s);
 		void parseString(std::string& s);
-		void call();
+		std::string& call() override;
 
 	private:
-		boost::asio::deadline_timer timer_;
 		int count_;
 		std::string s;
 };

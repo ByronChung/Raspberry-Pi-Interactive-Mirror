@@ -1,18 +1,16 @@
-#ifndef SPOTI_API_H
-#define SPOTI_API_H
+#ifndef SPOTIFY_API_H
+#define SPOTIFY_API_H
 
-#include <iostream>
 #include <string>
 #include <curl/curl.h>
 #include <jsoncpp/json/json.h>
-#include <vector>
-#include "api_interface.h"
-#include "curl-helper.h"
+#include "APIInterface.h"
+#include "CurlHelper.h"
 
-class spoti_api: public api_interface{
+class SpotifyAPI: public APIInterface{
 	public:
-		spoti_api();
-		~spoti_api() = default;
+		SpotifyAPI();
+		~SpotifyAPI() = default;
 		static size_t writefunc(void *ptr, size_t size, size_t nmemb, std::string *s);
 		void parseAccessToken(std::string &s);
 		void getRecentlyPlayedTracks();
@@ -25,8 +23,7 @@ class spoti_api: public api_interface{
 		const char* refresh_request;
 		std::string  access_token;
 		std::string recentSongs;
-		curl_helper* curl_token_make;
-		curl_helper* curl_response_make;
-
+		CurlHelper* curl_token_make;
+		CurlHelper* curl_response_make;
 };
 #endif

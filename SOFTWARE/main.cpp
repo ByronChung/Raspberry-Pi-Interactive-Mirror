@@ -1,18 +1,24 @@
-#include "api.h"
-#include "spoti-api.h"
+#include "Model.h"
 #include <iostream>
+#include "APIFactory.h"
+#include "APIInterface.h"
+#include "WeatherAPI.h"
+#include "SpotifyAPI.h"
+#include "CurlHelper.h"
 
-int main(){
+int main() {
 	std::string g;
 	std::string h;
-	
-	api* tst_weather = new api();
-	spoti_api* tst_music = new spoti_api();
-	
-	g = tst_weather->call();
-	h = tst_music->call();	
-	
-	std::cout << g << h << std::endl;
-	
-	return 0;
+
+	Model* m = new Model();
+
+	g = "weather";
+	h = "spotify";
+
+	m->update(g);
+	m->show_out();
+
+	m->update(h);
+	m->show_out();
 }
+

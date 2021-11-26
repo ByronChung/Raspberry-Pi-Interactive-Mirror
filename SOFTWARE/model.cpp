@@ -1,14 +1,15 @@
+//Class used to store the API factory, trigger resulting API call and store the output
 
-#include "model.h"
+#include "Model.h"
 
-model::model(void){
+Model::Model(void){
 }
 
-void model::update(std::string& s) {
-	api = factory.getAPI(s);
+void Model::update(std::string& api_id) {
+	api = factory.getAPI(api_id);
 	api_out = api->call();
 }
 
-void model::show_out() {
+void Model::show_out() {
 	std::cout << "Output: " << api_out << std::endl;
 }

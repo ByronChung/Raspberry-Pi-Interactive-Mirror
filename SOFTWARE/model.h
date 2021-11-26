@@ -3,17 +3,17 @@
 
 #include <iostream>
 #include <string>
-#include "api_factory.h"
+#include "APIFactory.h"
 
-class model {
+class Model {
 	public:
-		model();
-		~model() = default;
+		Model();
+		~Model() = default;
 		void update(std::string& s);
 		void show_out(void);
 	private:
-		api_interface* api;
-		api_factory factory;
+		APIInterface* api;
+		APIFactory factory;
 		std::string api_out;
 
 };

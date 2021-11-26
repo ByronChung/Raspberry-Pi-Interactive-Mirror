@@ -1,22 +1,25 @@
-#include "spoti-api.h"
+//Class to retrieve recently played tracks from group's common spotify account
 
-spoti_api::spoti_api(void){
+#include "SpotifyAPI.h"
+
+//Constructor to set up Spotify API authorization and refresh tokens
+//Structure of authorization request headers and tokens are according to Spotify authorization flow: https://developer.spotify.com/documentation/general/guides/authorization/code-flow/
+SpotifyAPI::SpotifyAPI(void){
 	base_64_encoding_auth_request = "Authorization: Basic ODNjYjhjZmI5YTNkNGNkYmJiZDdlZmRmNTdmNzFkNWI6OTQ0ZjEwMDg1YWNmNDg0Mzk3ZDkwN2IzNTg0YTc3MWE=";
 	refresh_request = "https://accounts.spotify.com/api/token?grant_type=refresh_token&refresh_token=AQAdqYuGHig8gIwc9rf7ED4KZcPexZWeq3cRBxIUUaS7G3SsC8e7TG9oGEhGtE6PmknM2Pe_L09SQcXnnVudl80QoGhG4A5MsI_mn-hJos2ibLOPt59BWDVKnCRin9MDOv4";
 }
 
-void spoti_api::parseAccessToken(std::string& s) {	
+//Function to parse the access token from authorization response
+void SpotifyAPI::parseAccessToken(std::string& s) {	
 	Json::Reader reader;
 	Json::Value obj;
 
 	reader.parse(s, obj);
-
 	access_token = obj["access_token"].asString();
-
-	std::cout << "Access Token " << access_token << std::endl;
 }
 
-void spoti_api::getRecentlyPlayedTracks() {
+//Function to retrieve HTTP response of recently played spotify tracks once authorization complete
+void SpotifyAPI::getRecentlyPlayedTracks() {
 	struct curl_slist *headers;
 
 	headers = NULL;
@@ -28,31 +31,32 @@ void spoti_api::getRecentlyPlayedTracks() {
 	
 	headers = curl_slist_append(headers, auth.c_str());
 
-	curl_response_make = new curl_helper(headers, "https://api.spotify.com/v1/me/player/recently-played?limit=5", "GET");
+	curl_response_make = new CurlHelper(headers, "https://api.spotify.com/v1/me/player/recently-played?limit=5", "GET");
 	spotify_songs_response = curl_response_make->get_response();
-
 }
 
-void spoti_api::parseRecentTracks() {
+//Function to parse HTTP response of recently played tracks
+void SpotifyAPI::parseRecentTracks() {
 	Json::Reader reader;
 	Json::Value obj;
 
 	reader.parse(spotify_songs_response, obj);
 	recentSongs = "";
+
 	for(Json::Value::ArrayIndex i = 0; i != obj["items"].size(); i++) {
 		recentSongs +=	"Song: " + obj["items"][i]["track"]["name"].asString();
 	}
 }
 
-
-std::string& spoti_api::call() {
+//Function to begin authorization flow & once complete, trigger process of fetching, parsing, returning recently played tracks
+std::string& SpotifyAPI::call() {
 	struct curl_slist *headers;
 
   	headers = NULL;
   	headers = curl_slist_append(headers, "Content-Type: application/x-www-form-urlencoded");
   	headers = curl_slist_append(headers, base_64_encoding_auth_request);
 	
-	curl_token_make = new curl_helper(headers, refresh_request, "POST");
+	curl_token_make = new CurlHelper(headers, refresh_request, "POST");
 	spotify_auth_response = curl_token_make->get_response();
 	
 	parseAccessToken(spotify_auth_response);
@@ -60,6 +64,5 @@ std::string& spoti_api::call() {
 	parseRecentTracks();
 
 	return recentSongs;
-
 }
 

@@ -3,12 +3,11 @@
 
 #include <curl/curl.h>
 #include <string>
-#include <iostream>
 
-class curl_helper {
+class CurlHelper {
 	public:
-		curl_helper(struct curl_slist* headers, std::string url, std::string req_type);
-		~curl_helper();
+		CurlHelper(struct curl_slist* headers, std::string url, std::string req_type);
+		~CurlHelper();
 		static size_t writefunc(void *ptr, size_t size, size_t nmemb, std::string *s);
 		std::string& get_response();
 	private:

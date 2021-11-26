@@ -7,6 +7,7 @@
 #include <jsoncpp/json/json.h>
 #include <vector>
 #include "api_interface.h"
+#include "curl-helper.h"
 
 class spoti_api: public api_interface{
 	public:
@@ -18,12 +19,14 @@ class spoti_api: public api_interface{
 		void parseRecentTracks();
 		std::string& call() override;
 	private:
-		std::string s;
-		std::string spotify_response;
+		std::string spotify_auth_response;
+		std::string spotify_songs_response;
 		const char* base_64_encoding_auth_request;
 		const char* refresh_request;
 		std::string  access_token;
 		std::string recentSongs;
+		curl_helper* curl_token_make;
+		curl_helper* curl_response_make;
 
 };
 #endif

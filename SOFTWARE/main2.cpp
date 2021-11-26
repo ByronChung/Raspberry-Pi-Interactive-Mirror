@@ -4,6 +4,7 @@
 #include "api_interface.h"
 #include "api.h"
 #include "spoti-api.h"
+#include "curl-helper.h"
 
 int main() {
 	std::string g;

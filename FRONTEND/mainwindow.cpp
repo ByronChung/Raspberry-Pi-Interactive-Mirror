@@ -29,3 +29,5 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+/* Author: Byron and Pablo */

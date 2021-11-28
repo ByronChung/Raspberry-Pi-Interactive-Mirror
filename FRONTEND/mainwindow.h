@@ -29,3 +29,5 @@ private:
     QWidget *GUI;
 };
 #endif // MAINWINDOW_H
+
+/* Author: Byron and Pablo */

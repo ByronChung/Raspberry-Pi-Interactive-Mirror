@@ -1,3 +1,4 @@
 To compile program run:
 qmake
 make
+./CommandGUI

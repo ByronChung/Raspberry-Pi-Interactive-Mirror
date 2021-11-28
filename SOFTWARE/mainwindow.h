@@ -1,18 +1,9 @@
-/*
-Author: Ashwin Singh (250 955 585)
-Description: Header file containing imports, function and instance variable declarations
-Date: October 5, 2021
-*/
-
-
-#ifndef MAINWINDOW_H //Include header guard to prevent repeated definitions when preprocessor parses file
+#ifndef MAINWINDOW_H 
 #define MAINWINDOW_H
 
 #include <QMainWindow>
 #include <QPushButton>
-#include <QLineEdit>
 #include <QLabel>
-#include <QScrollArea>
 #include <string>
 #include <iostream>
 #include "Model.h"

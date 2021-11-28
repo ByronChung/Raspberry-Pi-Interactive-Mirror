@@ -23,7 +23,6 @@ void mainwindow::make_connection(QPushButton *btn, QLabel *label) {
                         std::string s = btn->text().toStdString();
                         std::string output;
                         m->update(s);
-                        //std::cout << "String: " << s << std::endl;    
                         output = m->show_out();
                         label->setText(QString::fromStdString(output));
            });

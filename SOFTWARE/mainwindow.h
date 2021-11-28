@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QPushButton>
+#include <QMetaType>
 #include <QLabel>
 #include <string>
 #include <iostream>
@@ -12,6 +13,7 @@
 #include "CurlHelper.h"
 #include "SpotifyAPI.h"
 #include "WeatherAPI.h"
+#include "MotionSensorThread.h"
 
 class mainwindow : public QMainWindow { //Inherit from QMainWindow class to display UI contents into window container
 	
@@ -21,15 +23,17 @@ class mainwindow : public QMainWindow { //Inherit from QMainWindow class to disp
 		explicit mainwindow(QWidget *parent=nullptr); //No parent exists for this window, therefore pass null pointer
 		void make_connection(QPushButton *btn, QLabel *label);
 	
-	private slots: //Slot gets called when signal emitted to it; in this case handleButton() executes to create Boost process, return output and error
-		//void function(QString& text);
-	
+	public slots:
+		void onSensorReading(std::string reading);
 	private:
 		QPushButton *btn_1;
 		QPushButton *btn_2;
 		QLabel *text_1;
 		QLabel *text_2;
+		QLabel *sensor_text;
 		Model *m;
+
+		MotionSensorThread *sensor;
 };
 #endif
 

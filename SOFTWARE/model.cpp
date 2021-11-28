@@ -10,6 +10,7 @@ void Model::update(std::string& api_id) {
 	api_out = api->call();
 }
 
-void Model::show_out() {
+std::string& Model::show_out() {
 	std::cout << "Output: " << api_out << std::endl;
+	return api_out;
 }

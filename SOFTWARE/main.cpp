@@ -1,24 +1,14 @@
-#include "Model.h"
-#include <iostream>
-#include "APIFactory.h"
-#include "APIInterface.h"
-#include "WeatherAPI.h"
-#include "SpotifyAPI.h"
-#include "CurlHelper.h"
+/*
+Author: Ashwin Singh
+Description: Main program to run user interface
+Date October 5, 2021
+*/
+#include "mainwindow.h"
+#include <QApplication>
 
-int main() {
-	std::string g;
-	std::string h;
-
-	Model* m = new Model();
-
-	g = "weather";
-	h = "spotify";
-
-	m->update(g);
-	m->show_out();
-
-	m->update(h);
-	m->show_out();
+int main(int argc, char *argv[]) {
+	QApplication app(argc, argv);
+	mainwindow mainWindow;
+	mainWindow.showMaximized();
+	return app.exec();
 }
-

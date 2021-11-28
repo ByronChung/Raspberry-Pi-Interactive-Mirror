@@ -10,7 +10,7 @@ class Model {
 		Model();
 		~Model() = default;
 		void update(std::string& s);
-		void show_out(void);
+		std::string& show_out(void);
 	private:
 		APIInterface* api;
 		APIFactory factory;

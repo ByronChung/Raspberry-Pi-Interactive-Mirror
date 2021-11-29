@@ -1,0 +1,118 @@
+\hypertarget{classmainwindow}{}\doxysection{mainwindow Class Reference}
+\label{classmainwindow}\index{mainwindow@{mainwindow}}
+
+
+User Interface class that is driven by data sent from hardware \& A\+P\+Is Class implements button triggers for A\+PI calls to display Spotify and Weather data, and uses Q\+Threads to display whether motion is detected or not from the \mbox{\hyperlink{classMotionSensorThread}{Motion\+Sensor\+Thread}} Class.  
+
+
+
+
+{\ttfamily \#include $<$mainwindow.\+h$>$}
+
+
+
+Inheritance diagram for mainwindow\+:
+% FIG 0
+
+
+Collaboration diagram for mainwindow\+:
+% FIG 1
+\doxysubsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classmainwindow_ac31deb8eb25a1ac1627ad8510f616863}{on\+Sensor\+Reading}} (std\+::string reading)
+\begin{DoxyCompactList}\small\item\em Function to retrieve data from \mbox{\hyperlink{classMotionSensorThread}{Motion\+Sensor\+Thread}} Class that handles Raspberry Pi-\/\+Arduino P\+IR sensor monitoring Every 5 seconds when sensor readings updated and emitted from \mbox{\hyperlink{classMotionSensorThread}{Motion\+Sensor\+Thread}} Class, on\+Sensor\+Reading receives resultant string indicating if motion detected or not @parameters String representing motion detection reading. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmainwindow_a0fdd6899038444a0c46052859468f67f}{mainwindow}} (Q\+Widget $\ast$parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Constructor to initiate button-\/handler connections and thread process for polling P\+IR sensor data from Raspberry Pi-\/\+Arduino set-\/up Initialize all button on-\/click handlers and trigger thread to fetch sensor readings continously in background @parameters Addresses of the button and its label. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classmainwindow_a06f94eb348882bc50e52395943a952cc}{make\+\_\+connection}} (Q\+Push\+Button $\ast$btn, Q\+Label $\ast$label)
+\begin{DoxyCompactList}\small\item\em Function to automate QT connection process for a particular button and its label Connect button to its label such that when the button is pressed, its label is sent as a string to the \mbox{\hyperlink{classModel}{Model}} class to generate an A\+PI call \& retrieve, show data for the UI @parameters Addresses of the button and its label. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classmainwindow_a070149a12f4f8bcb79b3f06819818eb0}\label{classmainwindow_a070149a12f4f8bcb79b3f06819818eb0}} 
+Q\+Push\+Button $\ast$ {\bfseries btn\+\_\+1}
+\item 
+\mbox{\Hypertarget{classmainwindow_aa36f7458b3b5893c09f71239a0b0fd15}\label{classmainwindow_aa36f7458b3b5893c09f71239a0b0fd15}} 
+Q\+Push\+Button $\ast$ {\bfseries btn\+\_\+2}
+\item 
+\mbox{\Hypertarget{classmainwindow_a638d9e0a995beb36744831e509c0f34c}\label{classmainwindow_a638d9e0a995beb36744831e509c0f34c}} 
+Q\+Label $\ast$ {\bfseries text\+\_\+1}
+\item 
+\mbox{\Hypertarget{classmainwindow_a7dd14e0d62990823ee8a9afb38940dd3}\label{classmainwindow_a7dd14e0d62990823ee8a9afb38940dd3}} 
+Q\+Label $\ast$ {\bfseries text\+\_\+2}
+\item 
+\mbox{\Hypertarget{classmainwindow_a40fd45b82359fa48036a4b544f7029dd}\label{classmainwindow_a40fd45b82359fa48036a4b544f7029dd}} 
+Q\+Label $\ast$ {\bfseries sensor\+\_\+text}
+\item 
+\mbox{\Hypertarget{classmainwindow_afcf4535939b3bf0a0aa47b954876f65c}\label{classmainwindow_afcf4535939b3bf0a0aa47b954876f65c}} 
+\mbox{\hyperlink{classModel}{Model}} $\ast$ {\bfseries m}
+\item 
+\mbox{\Hypertarget{classmainwindow_a7635f13e4e98c08777ce50411881a8b3}\label{classmainwindow_a7635f13e4e98c08777ce50411881a8b3}} 
+\mbox{\hyperlink{classMotionSensorThread}{Motion\+Sensor\+Thread}} $\ast$ {\bfseries sensor}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+User Interface class that is driven by data sent from hardware \& A\+P\+Is Class implements button triggers for A\+PI calls to display Spotify and Weather data, and uses Q\+Threads to display whether motion is detected or not from the \mbox{\hyperlink{classMotionSensorThread}{Motion\+Sensor\+Thread}} Class. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classmainwindow_a0fdd6899038444a0c46052859468f67f}\label{classmainwindow_a0fdd6899038444a0c46052859468f67f}} 
+\index{mainwindow@{mainwindow}!mainwindow@{mainwindow}}
+\index{mainwindow@{mainwindow}!mainwindow@{mainwindow}}
+\doxysubsubsection{\texorpdfstring{mainwindow()}{mainwindow()}}
+{\footnotesize\ttfamily mainwindow\+::mainwindow (\begin{DoxyParamCaption}\item[{Q\+Widget $\ast$}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructor to initiate button-\/handler connections and thread process for polling P\+IR sensor data from Raspberry Pi-\/\+Arduino set-\/up Initialize all button on-\/click handlers and trigger thread to fetch sensor readings continously in background @parameters Addresses of the button and its label. 
+
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Ashwin Singh, Ashvinder Suri 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classmainwindow_a06f94eb348882bc50e52395943a952cc}\label{classmainwindow_a06f94eb348882bc50e52395943a952cc}} 
+\index{mainwindow@{mainwindow}!make\_connection@{make\_connection}}
+\index{make\_connection@{make\_connection}!mainwindow@{mainwindow}}
+\doxysubsubsection{\texorpdfstring{make\_connection()}{make\_connection()}}
+{\footnotesize\ttfamily void mainwindow\+::make\+\_\+connection (\begin{DoxyParamCaption}\item[{Q\+Push\+Button $\ast$}]{btn,  }\item[{Q\+Label $\ast$}]{label }\end{DoxyParamCaption})}
+
+
+
+Function to automate QT connection process for a particular button and its label Connect button to its label such that when the button is pressed, its label is sent as a string to the \mbox{\hyperlink{classModel}{Model}} class to generate an A\+PI call \& retrieve, show data for the UI @parameters Addresses of the button and its label. 
+
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Ashwin Singh, Ashvinder Suri 
+\end{DoxyAuthor}
+\mbox{\Hypertarget{classmainwindow_ac31deb8eb25a1ac1627ad8510f616863}\label{classmainwindow_ac31deb8eb25a1ac1627ad8510f616863}} 
+\index{mainwindow@{mainwindow}!onSensorReading@{onSensorReading}}
+\index{onSensorReading@{onSensorReading}!mainwindow@{mainwindow}}
+\doxysubsubsection{\texorpdfstring{onSensorReading}{onSensorReading}}
+{\footnotesize\ttfamily void mainwindow\+::on\+Sensor\+Reading (\begin{DoxyParamCaption}\item[{std\+::string}]{reading }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Function to retrieve data from \mbox{\hyperlink{classMotionSensorThread}{Motion\+Sensor\+Thread}} Class that handles Raspberry Pi-\/\+Arduino P\+IR sensor monitoring Every 5 seconds when sensor readings updated and emitted from \mbox{\hyperlink{classMotionSensorThread}{Motion\+Sensor\+Thread}} Class, on\+Sensor\+Reading receives resultant string indicating if motion detected or not @parameters String representing motion detection reading. 
+
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Ashwin Singh 
+\end{DoxyAuthor}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+mainwindow.\+h\item 
+mainwindow.\+cpp\end{DoxyCompactItemize}

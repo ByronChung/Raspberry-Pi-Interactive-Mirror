@@ -1,0 +1,11 @@
+digraph "Model"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="Model",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Class used to handle data processing Class generates an API object using the APIFactory Class & then ..."];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" factory" ];
+  Node2 [label="APIFactory",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classAPIFactory.html",tooltip="API Factory to return types of API objects depending on what client requested Class uses string passe..."];
+  Node3 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" api" ];
+  Node3 [label="APIInterface",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classAPIInterface.html",tooltip="Interface to define general API object Different types of API objects implement interface (evident by..."];
+}

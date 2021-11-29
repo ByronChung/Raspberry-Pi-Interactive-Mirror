@@ -1,0 +1,88 @@
+\hypertarget{classCurlHelper}{}\doxysection{Curl\+Helper Class Reference}
+\label{classCurlHelper}\index{CurlHelper@{CurlHelper}}
+
+
+Helper class to set up and perform H\+T\+TP request using c\+U\+RL Helper class handles header, parameter, H\+T\+TP request type (e.\+g. P\+O\+ST, G\+ET) set-\/up and returns raw J\+S\+ON response using c\+U\+RL library.  
+
+
+
+
+{\ttfamily \#include $<$Curl\+Helper.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCurlHelper_a45bce2ee47c09d2482ae7b6fc8bfae3a}{Curl\+Helper}} (struct curl\+\_\+slist $\ast$headers, std\+::string url, std\+::string req\+\_\+type)
+\begin{DoxyCompactList}\small\item\em Constructor to perform c\+U\+RL set up and make request Setup headers, parameters and H\+T\+TP request type, then c\+U\+RL performs request \& stores raw data to the class member response @parameters struct containing request headers, U\+RL string, and request-\/type string. \end{DoxyCompactList}\item 
+std\+::string \& \mbox{\hyperlink{classCurlHelper_a9429fc67cd5b674d10c7b76c0d5eb26e}{get\+\_\+response}} ()
+\begin{DoxyCompactList}\small\item\em Getter to return raw J\+S\+ON response Return raw J\+S\+ON response stored to class member response-\/string @parameters None. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static size\+\_\+t \mbox{\hyperlink{classCurlHelper_acf6a643c1acd2350a6097ffe97b0fb67}{writefunc}} (void $\ast$ptr, size\+\_\+t size, size\+\_\+t nmemb, std\+::string $\ast$s)
+\begin{DoxyCompactList}\small\item\em Callback function required to transfer response data into a variable c\+U\+RL raw J\+S\+ON response stored to class member response-\/string using callback function @parameters void pointer, data chunk size, number of data chunks required from c\+U\+RL library, and string variable storing data from request. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCurlHelper_af32df0b8e2db4f1f4ff74cfaf1775990}\label{classCurlHelper_af32df0b8e2db4f1f4ff74cfaf1775990}} 
+std\+::string {\bfseries response}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Helper class to set up and perform H\+T\+TP request using c\+U\+RL Helper class handles header, parameter, H\+T\+TP request type (e.\+g. P\+O\+ST, G\+ET) set-\/up and returns raw J\+S\+ON response using c\+U\+RL library. 
+
+\begin{DoxyAuthor}{Author}
+Ashwin Singh 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classCurlHelper_a45bce2ee47c09d2482ae7b6fc8bfae3a}\label{classCurlHelper_a45bce2ee47c09d2482ae7b6fc8bfae3a}} 
+\index{CurlHelper@{CurlHelper}!CurlHelper@{CurlHelper}}
+\index{CurlHelper@{CurlHelper}!CurlHelper@{CurlHelper}}
+\doxysubsubsection{\texorpdfstring{CurlHelper()}{CurlHelper()}}
+{\footnotesize\ttfamily Curl\+Helper\+::\+Curl\+Helper (\begin{DoxyParamCaption}\item[{struct curl\+\_\+slist $\ast$}]{headers,  }\item[{std\+::string}]{url,  }\item[{std\+::string}]{req\+\_\+type }\end{DoxyParamCaption})}
+
+
+
+Constructor to perform c\+U\+RL set up and make request Setup headers, parameters and H\+T\+TP request type, then c\+U\+RL performs request \& stores raw data to the class member response @parameters struct containing request headers, U\+RL string, and request-\/type string. 
+
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classCurlHelper_a9429fc67cd5b674d10c7b76c0d5eb26e}\label{classCurlHelper_a9429fc67cd5b674d10c7b76c0d5eb26e}} 
+\index{CurlHelper@{CurlHelper}!get\_response@{get\_response}}
+\index{get\_response@{get\_response}!CurlHelper@{CurlHelper}}
+\doxysubsubsection{\texorpdfstring{get\_response()}{get\_response()}}
+{\footnotesize\ttfamily std\+::string \& Curl\+Helper\+::get\+\_\+response (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Getter to return raw J\+S\+ON response Return raw J\+S\+ON response stored to class member response-\/string @parameters None. 
+
+\begin{DoxyReturn}{Returns}
+Address of response string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCurlHelper_acf6a643c1acd2350a6097ffe97b0fb67}\label{classCurlHelper_acf6a643c1acd2350a6097ffe97b0fb67}} 
+\index{CurlHelper@{CurlHelper}!writefunc@{writefunc}}
+\index{writefunc@{writefunc}!CurlHelper@{CurlHelper}}
+\doxysubsubsection{\texorpdfstring{writefunc()}{writefunc()}}
+{\footnotesize\ttfamily size\+\_\+t Curl\+Helper\+::writefunc (\begin{DoxyParamCaption}\item[{void $\ast$}]{ptr,  }\item[{size\+\_\+t}]{size,  }\item[{size\+\_\+t}]{nmemb,  }\item[{std\+::string $\ast$}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Callback function required to transfer response data into a variable c\+U\+RL raw J\+S\+ON response stored to class member response-\/string using callback function @parameters void pointer, data chunk size, number of data chunks required from c\+U\+RL library, and string variable storing data from request. 
+
+\begin{DoxyReturn}{Returns}
+unsigned data response code 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Curl\+Helper.\+h\item 
+Curl\+Helper.\+cpp\end{DoxyCompactItemize}

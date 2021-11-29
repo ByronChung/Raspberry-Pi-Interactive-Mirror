@@ -1,0 +1,78 @@
+\hypertarget{classModel}{}\doxysection{Model Class Reference}
+\label{classModel}\index{Model@{Model}}
+
+
+Class used to handle data processing Class generates an A\+PI object using the \mbox{\hyperlink{classAPIFactory}{A\+P\+I\+Factory}} Class \& then performs H\+T\+TP request on the A\+PI object, receives a response and stores it.  
+
+
+
+
+{\ttfamily \#include $<$Model.\+h$>$}
+
+
+
+Collaboration diagram for Model\+:
+% FIG 0
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classModel_a974872d87c1d6e5886d5bc65fb8467f3}{update}} (std\+::string \&s)
+\begin{DoxyCompactList}\small\item\em Store A\+PI data depending on button clicked in UI Formulate A\+PI object depending on string passed from UI upon button click, then perform H\+T\+TP request and store response to data member api\+\_\+out @parameters Address of string passed from UI. \end{DoxyCompactList}\item 
+std\+::string \& \mbox{\hyperlink{classModel_ab958dc401027c1706a6c58b84d7f1811}{show\+\_\+out}} (void)
+\begin{DoxyCompactList}\small\item\em Getter to return formatted A\+PI response Return response stored in data member api\+\_\+out string @parameters None. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classModel_a64e0e27b5657644376c6daca7484d6bc}\label{classModel_a64e0e27b5657644376c6daca7484d6bc}} 
+\mbox{\hyperlink{classAPIInterface}{A\+P\+I\+Interface}} $\ast$ {\bfseries api}
+\item 
+\mbox{\Hypertarget{classModel_a48f4ef49261a9e8396cad34f8bcddaa8}\label{classModel_a48f4ef49261a9e8396cad34f8bcddaa8}} 
+\mbox{\hyperlink{classAPIFactory}{A\+P\+I\+Factory}} {\bfseries factory}
+\item 
+\mbox{\Hypertarget{classModel_aa83289cff776e5e546427ce0859df1c8}\label{classModel_aa83289cff776e5e546427ce0859df1c8}} 
+std\+::string {\bfseries api\+\_\+out}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class used to handle data processing Class generates an A\+PI object using the \mbox{\hyperlink{classAPIFactory}{A\+P\+I\+Factory}} Class \& then performs H\+T\+TP request on the A\+PI object, receives a response and stores it. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classModel_ab958dc401027c1706a6c58b84d7f1811}\label{classModel_ab958dc401027c1706a6c58b84d7f1811}} 
+\index{Model@{Model}!show\_out@{show\_out}}
+\index{show\_out@{show\_out}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{show\_out()}{show\_out()}}
+{\footnotesize\ttfamily std\+::string \& Model\+::show\+\_\+out (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Getter to return formatted A\+PI response Return response stored in data member api\+\_\+out string @parameters None. 
+
+\begin{DoxyReturn}{Returns}
+Response string api\+\_\+out 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Ashwin Singh 
+\end{DoxyAuthor}
+\mbox{\Hypertarget{classModel_a974872d87c1d6e5886d5bc65fb8467f3}\label{classModel_a974872d87c1d6e5886d5bc65fb8467f3}} 
+\index{Model@{Model}!update@{update}}
+\index{update@{update}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Model\+::update (\begin{DoxyParamCaption}\item[{std\+::string \&}]{s }\end{DoxyParamCaption})}
+
+
+
+Store A\+PI data depending on button clicked in UI Formulate A\+PI object depending on string passed from UI upon button click, then perform H\+T\+TP request and store response to data member api\+\_\+out @parameters Address of string passed from UI. 
+
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Ashwin Singh 
+\end{DoxyAuthor}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Model.\+h\item 
+Model.\+cpp\end{DoxyCompactItemize}

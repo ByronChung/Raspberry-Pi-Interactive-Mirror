@@ -1,0 +1,147 @@
+\hypertarget{classModel}{}\doxysection{Model Class Reference}
+\label{classModel}\index{Model@{Model}}
+
+
+Class used to handle data processing Class generates an A\+PI object using the \mbox{\hyperlink{classAPIFactory}{A\+P\+I\+Factory}} Class \& then performs H\+T\+TP request on the A\+PI object, receives a response and stores it.  
+
+
+
+
+{\ttfamily \#include $<$Model.\+h$>$}
+
+
+
+Collaboration diagram for Model\+:
+% FIG 0
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classModel_ae3b375de5f6df4faf74a95d64748e048}{Model}} ()
+\item 
+\mbox{\hyperlink{classModel_a3f337d47921169f4d430f416e6df095a}{$\sim$\+Model}} ()=default
+\item 
+void \mbox{\hyperlink{classModel_a974872d87c1d6e5886d5bc65fb8467f3}{update}} (std\+::string \&s)
+\begin{DoxyCompactList}\small\item\em Store A\+PI data depending on button clicked in UI Formulate A\+PI object depending on string passed from UI upon button click, then perform H\+T\+TP request and store response to data member api\+\_\+out. \end{DoxyCompactList}\item 
+std\+::string \& \mbox{\hyperlink{classModel_ab958dc401027c1706a6c58b84d7f1811}{show\+\_\+out}} (void)
+\begin{DoxyCompactList}\small\item\em Getter to return formatted A\+PI response Return response stored in data member api\+\_\+out string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classAPIInterface}{A\+P\+I\+Interface}} $\ast$ \mbox{\hyperlink{classModel_a64e0e27b5657644376c6daca7484d6bc}{api}}
+\item 
+\mbox{\hyperlink{classAPIFactory}{A\+P\+I\+Factory}} \mbox{\hyperlink{classModel_a48f4ef49261a9e8396cad34f8bcddaa8}{factory}}
+\item 
+std\+::string \mbox{\hyperlink{classModel_aa83289cff776e5e546427ce0859df1c8}{api\+\_\+out}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class used to handle data processing Class generates an A\+PI object using the \mbox{\hyperlink{classAPIFactory}{A\+P\+I\+Factory}} Class \& then performs H\+T\+TP request on the A\+PI object, receives a response and stores it. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classModel_ae3b375de5f6df4faf74a95d64748e048}\label{classModel_ae3b375de5f6df4faf74a95d64748e048}} 
+\index{Model@{Model}!Model@{Model}}
+\index{Model@{Model}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{Model()}{Model()}}
+{\footnotesize\ttfamily Model\+::\+Model (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{5                 \{}
+\DoxyCodeLine{6 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classModel_a3f337d47921169f4d430f416e6df095a}\label{classModel_a3f337d47921169f4d430f416e6df095a}} 
+\index{Model@{Model}!````~Model@{$\sim$Model}}
+\index{````~Model@{$\sim$Model}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{$\sim$Model()}{~Model()}}
+{\footnotesize\ttfamily Model\+::$\sim$\+Model (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classModel_ab958dc401027c1706a6c58b84d7f1811}\label{classModel_ab958dc401027c1706a6c58b84d7f1811}} 
+\index{Model@{Model}!show\_out@{show\_out}}
+\index{show\_out@{show\_out}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{show\_out()}{show\_out()}}
+{\footnotesize\ttfamily std\+::string \& Model\+::show\+\_\+out (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Getter to return formatted A\+PI response Return response stored in data member api\+\_\+out string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Response string api\+\_\+out 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Ashwin Singh 
+\end{DoxyAuthor}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{13                            \{}
+\DoxyCodeLine{14     std::cout << \textcolor{stringliteral}{"Output: "} << \mbox{\hyperlink{classModel_aa83289cff776e5e546427ce0859df1c8}{api\_out}} << std::endl;}
+\DoxyCodeLine{15     \textcolor{keywordflow}{return} \mbox{\hyperlink{classModel_aa83289cff776e5e546427ce0859df1c8}{api\_out}};}
+\DoxyCodeLine{16 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classModel_a974872d87c1d6e5886d5bc65fb8467f3}\label{classModel_a974872d87c1d6e5886d5bc65fb8467f3}} 
+\index{Model@{Model}!update@{update}}
+\index{update@{update}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Model\+::update (\begin{DoxyParamCaption}\item[{std\+::string \&}]{s }\end{DoxyParamCaption})}
+
+
+
+Store A\+PI data depending on button clicked in UI Formulate A\+PI object depending on string passed from UI upon button click, then perform H\+T\+TP request and store response to data member api\+\_\+out. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Address} & of string passed from UI \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Ashwin Singh 
+\end{DoxyAuthor}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{8                                     \{}
+\DoxyCodeLine{9     \mbox{\hyperlink{classModel_a64e0e27b5657644376c6daca7484d6bc}{api}} = \mbox{\hyperlink{classModel_a48f4ef49261a9e8396cad34f8bcddaa8}{factory}}.\mbox{\hyperlink{classAPIFactory_a06c8b54e8cde2c72f4501d8a583aa58b}{getAPI}}(api\_id);}
+\DoxyCodeLine{10     \mbox{\hyperlink{classModel_aa83289cff776e5e546427ce0859df1c8}{api\_out}} = \mbox{\hyperlink{classModel_a64e0e27b5657644376c6daca7484d6bc}{api}}-\/>\mbox{\hyperlink{classAPIInterface_acfbf0916484ebab8ff7475c4d8a49833}{call}}();}
+\DoxyCodeLine{11 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classModel_a64e0e27b5657644376c6daca7484d6bc}\label{classModel_a64e0e27b5657644376c6daca7484d6bc}} 
+\index{Model@{Model}!api@{api}}
+\index{api@{api}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{api}{api}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classAPIInterface}{A\+P\+I\+Interface}}$\ast$ Model\+::api\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classModel_aa83289cff776e5e546427ce0859df1c8}\label{classModel_aa83289cff776e5e546427ce0859df1c8}} 
+\index{Model@{Model}!api\_out@{api\_out}}
+\index{api\_out@{api\_out}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{api\_out}{api\_out}}
+{\footnotesize\ttfamily std\+::string Model\+::api\+\_\+out\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classModel_a48f4ef49261a9e8396cad34f8bcddaa8}\label{classModel_a48f4ef49261a9e8396cad34f8bcddaa8}} 
+\index{Model@{Model}!factory@{factory}}
+\index{factory@{factory}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{factory}{factory}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classAPIFactory}{A\+P\+I\+Factory}} Model\+::factory\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Model_8h}{Model.\+h}}\item 
+\mbox{\hyperlink{Model_8cpp}{Model.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,91 @@
+\hypertarget{classAPIFactory}{}\doxysection{A\+P\+I\+Factory Class Reference}
+\label{classAPIFactory}\index{APIFactory@{APIFactory}}
+
+
+A\+PI Factory to return types of A\+PI objects depending on what client requested Class uses string passed from button labels of UI to generate inherited A\+PI class objects (e.\+g. \mbox{\hyperlink{classSpotifyAPI}{Spotify\+A\+PI}}, \mbox{\hyperlink{classWeatherAPI}{Weather\+A\+PI}})  
+
+
+
+
+{\ttfamily \#include $<$A\+P\+I\+Factory.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classAPIFactory_a8cfc5acfafca94a576d352f32adb4af7}{A\+P\+I\+Factory}} ()
+\item 
+\mbox{\hyperlink{classAPIFactory_a64ee84572bd79cdfd1158839c598f7f4}{$\sim$\+A\+P\+I\+Factory}} ()=default
+\item 
+\mbox{\hyperlink{classAPIInterface}{A\+P\+I\+Interface}} $\ast$ \mbox{\hyperlink{classAPIFactory_a06c8b54e8cde2c72f4501d8a583aa58b}{get\+A\+PI}} (std\+::string \&api\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Return A\+PI object given a certain string Construct specific A\+PI object given string passed from button label; A\+PI object later used to perform H\+T\+TP requests to that A\+PI\textquotesingle{}s server. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A\+PI Factory to return types of A\+PI objects depending on what client requested Class uses string passed from button labels of UI to generate inherited A\+PI class objects (e.\+g. \mbox{\hyperlink{classSpotifyAPI}{Spotify\+A\+PI}}, \mbox{\hyperlink{classWeatherAPI}{Weather\+A\+PI}}) 
+
+\begin{DoxyAuthor}{Author}
+Ashwin Singh 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classAPIFactory_a8cfc5acfafca94a576d352f32adb4af7}\label{classAPIFactory_a8cfc5acfafca94a576d352f32adb4af7}} 
+\index{APIFactory@{APIFactory}!APIFactory@{APIFactory}}
+\index{APIFactory@{APIFactory}!APIFactory@{APIFactory}}
+\doxysubsubsection{\texorpdfstring{APIFactory()}{APIFactory()}}
+{\footnotesize\ttfamily A\+P\+I\+Factory\+::\+A\+P\+I\+Factory (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{5 \{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classAPIFactory_a64ee84572bd79cdfd1158839c598f7f4}\label{classAPIFactory_a64ee84572bd79cdfd1158839c598f7f4}} 
+\index{APIFactory@{APIFactory}!````~APIFactory@{$\sim$APIFactory}}
+\index{````~APIFactory@{$\sim$APIFactory}!APIFactory@{APIFactory}}
+\doxysubsubsection{\texorpdfstring{$\sim$APIFactory()}{~APIFactory()}}
+{\footnotesize\ttfamily A\+P\+I\+Factory\+::$\sim$\+A\+P\+I\+Factory (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classAPIFactory_a06c8b54e8cde2c72f4501d8a583aa58b}\label{classAPIFactory_a06c8b54e8cde2c72f4501d8a583aa58b}} 
+\index{APIFactory@{APIFactory}!getAPI@{getAPI}}
+\index{getAPI@{getAPI}!APIFactory@{APIFactory}}
+\doxysubsubsection{\texorpdfstring{getAPI()}{getAPI()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classAPIInterface}{A\+P\+I\+Interface}} $\ast$ A\+P\+I\+Factory\+::get\+A\+PI (\begin{DoxyParamCaption}\item[{std\+::string \&}]{api\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+Return A\+PI object given a certain string Construct specific A\+PI object given string passed from button label; A\+PI object later used to perform H\+T\+TP requests to that A\+PI\textquotesingle{}s server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Pass} & address of string specifying A\+PI object requested \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Constructed A\+PI object 
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{7                                                   \{}
+\DoxyCodeLine{8     }
+\DoxyCodeLine{9     \mbox{\hyperlink{classAPIInterface}{APIInterface}}* api\_type;}
+\DoxyCodeLine{10     }
+\DoxyCodeLine{11     \textcolor{keywordflow}{if}(api\_id == \textcolor{stringliteral}{"weather"}) \{}
+\DoxyCodeLine{12         api\_type = \textcolor{keyword}{new} \mbox{\hyperlink{classWeatherAPI}{WeatherAPI}}();}
+\DoxyCodeLine{13     \}}
+\DoxyCodeLine{14     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(api\_id == \textcolor{stringliteral}{"spotify"}) \{}
+\DoxyCodeLine{15         api\_type = \textcolor{keyword}{new} \mbox{\hyperlink{classSpotifyAPI}{SpotifyAPI}}();}
+\DoxyCodeLine{16     \}}
+\DoxyCodeLine{17     \textcolor{keywordflow}{return} api\_type;}
+\DoxyCodeLine{18 \}   }
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{APIFactory_8h}{A\+P\+I\+Factory.\+h}}\item 
+\mbox{\hyperlink{APIFactory_8cpp}{A\+P\+I\+Factory.\+cpp}}\end{DoxyCompactItemize}

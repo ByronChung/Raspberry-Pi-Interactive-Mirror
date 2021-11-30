@@ -1,0 +1,156 @@
+\hypertarget{classMotionSensorThread}{}\doxysection{Motion\+Sensor\+Thread Class Reference}
+\label{classMotionSensorThread}\index{MotionSensorThread@{MotionSensorThread}}
+
+
+Class used to interface Raspberry Pi with Passive Infrared (P\+IR) motion sensor readings from the Arduino Class generates polling function that retrieves sensor readings infinitely and emits a signal telling the UI if motion is detected or not every 5 seconds.  
+
+
+
+
+{\ttfamily \#include $<$Motion\+Sensor\+Thread.\+h$>$}
+
+
+
+Inheritance diagram for Motion\+Sensor\+Thread\+:
+% FIG 0
+
+
+Collaboration diagram for Motion\+Sensor\+Thread\+:
+% FIG 1
+\doxysubsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classMotionSensorThread_a52e7d402c7128f575419afad44e2d056}{send\+Reading}} (std\+::string reading)
+\begin{DoxyCompactList}\small\item\em Function to emit string to UI to check whether motion detected Emitted signal called every 5 seconds; eventually received by UI thread (mainwindow) \& processed there for display. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMotionSensorThread_a65a0366fefc3ba56ea74bd14319bab55}{Motion\+Sensor\+Thread}} (Q\+Object $\ast$parent=0)
+\item 
+virtual void \mbox{\hyperlink{classMotionSensorThread_af0fe692ccbd80d32ad3b5c469643d52d}{run}} (void)
+\begin{DoxyCompactList}\small\item\em Infinitely running function used to poll P\+IR sensor data Required to be named run in order for Q\+Thread to trigger function when called; function forms connection to Arduino, polls sensor data \& emits data to UI. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class used to interface Raspberry Pi with Passive Infrared (P\+IR) motion sensor readings from the Arduino Class generates polling function that retrieves sensor readings infinitely and emits a signal telling the UI if motion is detected or not every 5 seconds. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classMotionSensorThread_a65a0366fefc3ba56ea74bd14319bab55}\label{classMotionSensorThread_a65a0366fefc3ba56ea74bd14319bab55}} 
+\index{MotionSensorThread@{MotionSensorThread}!MotionSensorThread@{MotionSensorThread}}
+\index{MotionSensorThread@{MotionSensorThread}!MotionSensorThread@{MotionSensorThread}}
+\doxysubsubsection{\texorpdfstring{MotionSensorThread()}{MotionSensorThread()}}
+{\footnotesize\ttfamily Motion\+Sensor\+Thread\+::\+Motion\+Sensor\+Thread (\begin{DoxyParamCaption}\item[{Q\+Object $\ast$}]{parent = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{3 : QThread(parent) \{\}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classMotionSensorThread_af0fe692ccbd80d32ad3b5c469643d52d}\label{classMotionSensorThread_af0fe692ccbd80d32ad3b5c469643d52d}} 
+\index{MotionSensorThread@{MotionSensorThread}!run@{run}}
+\index{run@{run}!MotionSensorThread@{MotionSensorThread}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void Motion\+Sensor\+Thread\+::run (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Infinitely running function used to poll P\+IR sensor data Required to be named run in order for Q\+Thread to trigger function when called; function forms connection to Arduino, polls sensor data \& emits data to UI. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Ashwin Singh 
+\end{DoxyAuthor}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{6                              \{}
+\DoxyCodeLine{7     \textcolor{keywordtype}{int} fd;}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9     \textcolor{comment}{//Open serial connection}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11     \textcolor{keywordflow}{if}((fd = serialOpen(\textcolor{stringliteral}{"/dev/ttyACM0"}, 9600)) < 0) \{}
+\DoxyCodeLine{12         std::cout << \textcolor{stringliteral}{"Error opening connection"} << std::endl;   }
+\DoxyCodeLine{13     \}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15     \textcolor{keywordtype}{char} input;}
+\DoxyCodeLine{16     \textcolor{keywordtype}{int} flag = 0;}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18     delay(5000);}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20     \textcolor{comment}{//Store motion detection string}}
+\DoxyCodeLine{21     std::string output = \textcolor{stringliteral}{"No motion detected\(\backslash\)n"};}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23     \textcolor{keywordflow}{for}(;;) \{}
+\DoxyCodeLine{24         }
+\DoxyCodeLine{25         \textcolor{comment}{//Only when data is available, grab motion flag from Arduino, parse to int \& update string}}
+\DoxyCodeLine{26         \textcolor{keywordflow}{if}(serialDataAvail(fd)) \{}
+\DoxyCodeLine{27             }
+\DoxyCodeLine{28             input = serialGetchar(fd);}
+\DoxyCodeLine{29             \textcolor{keywordtype}{int} check = input -\/ \textcolor{charliteral}{'0'};}
+\DoxyCodeLine{30             }
+\DoxyCodeLine{31             \textcolor{keywordflow}{if}((check == 0) || (check == 1)) \{}
+\DoxyCodeLine{32                 flag = input -\/ \textcolor{charliteral}{'0'};}
+\DoxyCodeLine{33             \}}
+\DoxyCodeLine{34         \}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36         \textcolor{keywordflow}{if}(flag == 0) \{}
+\DoxyCodeLine{37             output = \textcolor{stringliteral}{"No motion detected"};}
+\DoxyCodeLine{38         \}}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(flag == 1)\{}
+\DoxyCodeLine{41             output = \textcolor{stringliteral}{"Motion detected"};}
+\DoxyCodeLine{42         \}}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44         emit \mbox{\hyperlink{classMotionSensorThread_a52e7d402c7128f575419afad44e2d056}{sendReading}}(output);  }
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46         \textcolor{comment}{//Poll Arduino every five sec}}
+\DoxyCodeLine{47         delay(5000);}
+\DoxyCodeLine{48     \}}
+\DoxyCodeLine{49 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classMotionSensorThread_a52e7d402c7128f575419afad44e2d056}\label{classMotionSensorThread_a52e7d402c7128f575419afad44e2d056}} 
+\index{MotionSensorThread@{MotionSensorThread}!sendReading@{sendReading}}
+\index{sendReading@{sendReading}!MotionSensorThread@{MotionSensorThread}}
+\doxysubsubsection{\texorpdfstring{sendReading}{sendReading}}
+{\footnotesize\ttfamily void Motion\+Sensor\+Thread\+::send\+Reading (\begin{DoxyParamCaption}\item[{std\+::string}]{reading }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+Function to emit string to UI to check whether motion detected Emitted signal called every 5 seconds; eventually received by UI thread (mainwindow) \& processed there for display. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em String} & containing whether motion detected or not \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Ashwin Singh 
+\end{DoxyAuthor}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{127 \{}
+\DoxyCodeLine{128     \textcolor{keywordtype}{void} *\_a[] = \{ \textcolor{keyword}{nullptr}, \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\&\_t1)) \};}
+\DoxyCodeLine{129     QMetaObject::activate(\textcolor{keyword}{this}, \&staticMetaObject, 0, \_a);}
+\DoxyCodeLine{130 \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{MotionSensorThread_8h}{Motion\+Sensor\+Thread.\+h}}\item 
+\mbox{\hyperlink{moc__MotionSensorThread_8cpp}{moc\+\_\+\+Motion\+Sensor\+Thread.\+cpp}}\item 
+\mbox{\hyperlink{MotionSensorThread_8cpp}{Motion\+Sensor\+Thread.\+cpp}}\end{DoxyCompactItemize}

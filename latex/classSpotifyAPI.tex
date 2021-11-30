@@ -1,0 +1,307 @@
+\hypertarget{classSpotifyAPI}{}\doxysection{Spotify\+A\+PI Class Reference}
+\label{classSpotifyAPI}\index{SpotifyAPI@{SpotifyAPI}}
+
+
+Class used to interface with Spotify A\+PI Class performs Spotify A\+PI authentication using a refresh token \& then performs A\+PI call to fetch recently played songs from a dummy account made for project.  
+
+
+
+
+{\ttfamily \#include $<$Spotify\+A\+P\+I.\+h$>$}
+
+
+
+Inheritance diagram for Spotify\+A\+PI\+:
+% FIG 0
+
+
+Collaboration diagram for Spotify\+A\+PI\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSpotifyAPI_ab0d1896e2ab4c52f496eb494640a89b1}{Spotify\+A\+PI}} ()
+\begin{DoxyCompactList}\small\item\em Initialize data members base\+\_\+64\+\_\+encoding\+\_\+auth\+\_\+request and refresh\+\_\+request Initialize the data members to be used later for Spotify A\+PI authentication \& access. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classSpotifyAPI_a20209b8fde6f4f5f1ac27358136e615d}{$\sim$\+Spotify\+A\+PI}} ()=default
+\item 
+void \mbox{\hyperlink{classSpotifyAPI_a40e30a70f52e595680f6c16133567ca0}{parse\+Access\+Token}} (std\+::string \&s)
+\begin{DoxyCompactList}\small\item\em Parse response from authentication request to retrieve access token Convert J\+S\+ON response into a dictionary, parse response, retrieve access token \& store. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSpotifyAPI_a8ff3f8e1289c38a420ba7a3a58b5793e}{get\+Recently\+Played\+Tracks}} ()
+\begin{DoxyCompactList}\small\item\em Using access token, trigger A\+PI call to retrieve recently played tracks Retrieve raw J\+S\+ON response of recently played song data from Spotify A\+PI using c\+U\+RL, store. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSpotifyAPI_a015768af234256f2d85f85690b179463}{parse\+Recent\+Tracks}} ()
+\begin{DoxyCompactList}\small\item\em Parse response to retrieve recently played tracks Parse raw J\+S\+ON response from Spotify A\+PI using dictionary, retrieve recently played songs \& store. \end{DoxyCompactList}\item 
+std\+::string \& \mbox{\hyperlink{classSpotifyAPI_a17d73aace5f5bef0ab6cf0aa6200f814}{call}} () override
+\begin{DoxyCompactList}\small\item\em Implemented function based on \mbox{\hyperlink{classAPIInterface}{A\+P\+I\+Interface}}; Perform authentication, retrieve song data and store Use refresh token generated to retrieve access token using c\+U\+RL H\+T\+TP request to the Spotify access U\+RL, then call other functions to retrieve song data \& store. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classSpotifyAPI_a6332aa85a7bcc1e380b9eeab4fe4f56b}{spotify\+\_\+auth\+\_\+response}}
+\item 
+std\+::string \mbox{\hyperlink{classSpotifyAPI_a4202bafa3fa12a99943ede3aa790ce1a}{spotify\+\_\+songs\+\_\+response}}
+\item 
+const char $\ast$ \mbox{\hyperlink{classSpotifyAPI_ab977f7655481148ec4852a53dac944a2}{base\+\_\+64\+\_\+encoding\+\_\+auth\+\_\+request}}
+\item 
+const char $\ast$ \mbox{\hyperlink{classSpotifyAPI_a01581d1d9ec52159289057f787149c6b}{refresh\+\_\+request}}
+\item 
+std\+::string \mbox{\hyperlink{classSpotifyAPI_ae9b06266b297641418b834112eea24e6}{access\+\_\+token}}
+\item 
+std\+::string \mbox{\hyperlink{classSpotifyAPI_a8bd6390758a75ddccd5e44efdc81ac55}{recent\+Songs}}
+\item 
+\mbox{\hyperlink{classCurlHelper}{Curl\+Helper}} $\ast$ \mbox{\hyperlink{classSpotifyAPI_a7d8befbcbeae9ec6e166ce7e1589f8d7}{curl\+\_\+token\+\_\+make}}
+\item 
+\mbox{\hyperlink{classCurlHelper}{Curl\+Helper}} $\ast$ \mbox{\hyperlink{classSpotifyAPI_a8e4da61fecf40a5677c275b10d771161}{curl\+\_\+response\+\_\+make}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class used to interface with Spotify A\+PI Class performs Spotify A\+PI authentication using a refresh token \& then performs A\+PI call to fetch recently played songs from a dummy account made for project. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classSpotifyAPI_ab0d1896e2ab4c52f496eb494640a89b1}\label{classSpotifyAPI_ab0d1896e2ab4c52f496eb494640a89b1}} 
+\index{SpotifyAPI@{SpotifyAPI}!SpotifyAPI@{SpotifyAPI}}
+\index{SpotifyAPI@{SpotifyAPI}!SpotifyAPI@{SpotifyAPI}}
+\doxysubsubsection{\texorpdfstring{SpotifyAPI()}{SpotifyAPI()}}
+{\footnotesize\ttfamily Spotify\+A\+P\+I\+::\+Spotify\+A\+PI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initialize data members base\+\_\+64\+\_\+encoding\+\_\+auth\+\_\+request and refresh\+\_\+request Initialize the data members to be used later for Spotify A\+PI authentication \& access. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Ashwin Singh 
+\end{DoxyAuthor}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{7                           \{}
+\DoxyCodeLine{8     \mbox{\hyperlink{classSpotifyAPI_ab977f7655481148ec4852a53dac944a2}{base\_64\_encoding\_auth\_request}} = \textcolor{stringliteral}{"Authorization: Basic ODNjYjhjZmI5YTNkNGNkYmJiZDdlZmRmNTdmNzFkNWI6OTQ0ZjEwMDg1YWNmNDg0Mzk3ZDkwN2IzNTg0YTc3MWE="};}
+\DoxyCodeLine{9     \mbox{\hyperlink{classSpotifyAPI_a01581d1d9ec52159289057f787149c6b}{refresh\_request}} = \textcolor{stringliteral}{"https://accounts.spotify.com/api/token?grant\_type=refresh\_token\&refresh\_token=AQAdqYuGHig8gIwc9rf7ED4KZcPexZWeq3cRBxIUUaS7G3SsC8e7TG9oGEhGtE6PmknM2Pe\_L09SQcXnnVudl80QoGhG4A5MsI\_mn-\/hJos2ibLOPt59BWDVKnCRin9MDOv4"};}
+\DoxyCodeLine{10 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classSpotifyAPI_a20209b8fde6f4f5f1ac27358136e615d}\label{classSpotifyAPI_a20209b8fde6f4f5f1ac27358136e615d}} 
+\index{SpotifyAPI@{SpotifyAPI}!````~SpotifyAPI@{$\sim$SpotifyAPI}}
+\index{````~SpotifyAPI@{$\sim$SpotifyAPI}!SpotifyAPI@{SpotifyAPI}}
+\doxysubsubsection{\texorpdfstring{$\sim$SpotifyAPI()}{~SpotifyAPI()}}
+{\footnotesize\ttfamily Spotify\+A\+P\+I\+::$\sim$\+Spotify\+A\+PI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSpotifyAPI_a17d73aace5f5bef0ab6cf0aa6200f814}\label{classSpotifyAPI_a17d73aace5f5bef0ab6cf0aa6200f814}} 
+\index{SpotifyAPI@{SpotifyAPI}!call@{call}}
+\index{call@{call}!SpotifyAPI@{SpotifyAPI}}
+\doxysubsubsection{\texorpdfstring{call()}{call()}}
+{\footnotesize\ttfamily std\+::string \& Spotify\+A\+P\+I\+::call (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implemented function based on \mbox{\hyperlink{classAPIInterface}{A\+P\+I\+Interface}}; Perform authentication, retrieve song data and store Use refresh token generated to retrieve access token using c\+U\+RL H\+T\+TP request to the Spotify access U\+RL, then call other functions to retrieve song data \& store. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Formatted string of recently played songs 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Ashwin Singh 
+\end{DoxyAuthor}
+
+
+Implements \mbox{\hyperlink{classAPIInterface_acfbf0916484ebab8ff7475c4d8a49833}{A\+P\+I\+Interface}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{52                             \{}
+\DoxyCodeLine{53     \textcolor{keyword}{struct }curl\_slist *headers;}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55     headers = NULL;}
+\DoxyCodeLine{56     headers = curl\_slist\_append(headers, \textcolor{stringliteral}{"Content-\/Type: application/x-\/www-\/form-\/urlencoded"});}
+\DoxyCodeLine{57     headers = curl\_slist\_append(headers, \mbox{\hyperlink{classSpotifyAPI_ab977f7655481148ec4852a53dac944a2}{base\_64\_encoding\_auth\_request}});}
+\DoxyCodeLine{58     }
+\DoxyCodeLine{59     \mbox{\hyperlink{classSpotifyAPI_a7d8befbcbeae9ec6e166ce7e1589f8d7}{curl\_token\_make}} = \textcolor{keyword}{new} \mbox{\hyperlink{classCurlHelper}{CurlHelper}}(headers, \mbox{\hyperlink{classSpotifyAPI_a01581d1d9ec52159289057f787149c6b}{refresh\_request}}, \textcolor{stringliteral}{"POST"});}
+\DoxyCodeLine{60     \mbox{\hyperlink{classSpotifyAPI_a6332aa85a7bcc1e380b9eeab4fe4f56b}{spotify\_auth\_response}} = \mbox{\hyperlink{classSpotifyAPI_a7d8befbcbeae9ec6e166ce7e1589f8d7}{curl\_token\_make}}-\/>\mbox{\hyperlink{classCurlHelper_a9429fc67cd5b674d10c7b76c0d5eb26e}{get\_response}}();}
+\DoxyCodeLine{61     }
+\DoxyCodeLine{62     \mbox{\hyperlink{classSpotifyAPI_a40e30a70f52e595680f6c16133567ca0}{parseAccessToken}}(\mbox{\hyperlink{classSpotifyAPI_a6332aa85a7bcc1e380b9eeab4fe4f56b}{spotify\_auth\_response}});}
+\DoxyCodeLine{63     \mbox{\hyperlink{classSpotifyAPI_a8ff3f8e1289c38a420ba7a3a58b5793e}{getRecentlyPlayedTracks}}();}
+\DoxyCodeLine{64     \mbox{\hyperlink{classSpotifyAPI_a015768af234256f2d85f85690b179463}{parseRecentTracks}}();}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66     \textcolor{keywordflow}{return} \mbox{\hyperlink{classSpotifyAPI_a8bd6390758a75ddccd5e44efdc81ac55}{recentSongs}};}
+\DoxyCodeLine{67 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classSpotifyAPI_a8ff3f8e1289c38a420ba7a3a58b5793e}\label{classSpotifyAPI_a8ff3f8e1289c38a420ba7a3a58b5793e}} 
+\index{SpotifyAPI@{SpotifyAPI}!getRecentlyPlayedTracks@{getRecentlyPlayedTracks}}
+\index{getRecentlyPlayedTracks@{getRecentlyPlayedTracks}!SpotifyAPI@{SpotifyAPI}}
+\doxysubsubsection{\texorpdfstring{getRecentlyPlayedTracks()}{getRecentlyPlayedTracks()}}
+{\footnotesize\ttfamily void Spotify\+A\+P\+I\+::get\+Recently\+Played\+Tracks (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Using access token, trigger A\+PI call to retrieve recently played tracks Retrieve raw J\+S\+ON response of recently played song data from Spotify A\+PI using c\+U\+RL, store. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Ashwin Singh 
+\end{DoxyAuthor}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{22                                          \{}
+\DoxyCodeLine{23     \textcolor{keyword}{struct }curl\_slist *headers;}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25     headers = NULL;}
+\DoxyCodeLine{26     headers = curl\_slist\_append(headers, \textcolor{stringliteral}{"Accept: application/json"});}
+\DoxyCodeLine{27     headers = curl\_slist\_append(headers, \textcolor{stringliteral}{"Content-\/Type: application/json"});}
+\DoxyCodeLine{28     }
+\DoxyCodeLine{29     std::string auth = \textcolor{stringliteral}{"Authorization: Bearer "};}
+\DoxyCodeLine{30     auth.append(\mbox{\hyperlink{classSpotifyAPI_ae9b06266b297641418b834112eea24e6}{access\_token}});}
+\DoxyCodeLine{31     }
+\DoxyCodeLine{32     headers = curl\_slist\_append(headers, auth.c\_str());}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34     \mbox{\hyperlink{classSpotifyAPI_a8e4da61fecf40a5677c275b10d771161}{curl\_response\_make}} = \textcolor{keyword}{new} \mbox{\hyperlink{classCurlHelper}{CurlHelper}}(headers, \textcolor{stringliteral}{"https://api.spotify.com/v1/me/player/recently-\/played?limit=5"}, \textcolor{stringliteral}{"GET"});}
+\DoxyCodeLine{35     \mbox{\hyperlink{classSpotifyAPI_a4202bafa3fa12a99943ede3aa790ce1a}{spotify\_songs\_response}} = \mbox{\hyperlink{classSpotifyAPI_a8e4da61fecf40a5677c275b10d771161}{curl\_response\_make}}-\/>\mbox{\hyperlink{classCurlHelper_a9429fc67cd5b674d10c7b76c0d5eb26e}{get\_response}}();}
+\DoxyCodeLine{36 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classSpotifyAPI_a40e30a70f52e595680f6c16133567ca0}\label{classSpotifyAPI_a40e30a70f52e595680f6c16133567ca0}} 
+\index{SpotifyAPI@{SpotifyAPI}!parseAccessToken@{parseAccessToken}}
+\index{parseAccessToken@{parseAccessToken}!SpotifyAPI@{SpotifyAPI}}
+\doxysubsubsection{\texorpdfstring{parseAccessToken()}{parseAccessToken()}}
+{\footnotesize\ttfamily void Spotify\+A\+P\+I\+::parse\+Access\+Token (\begin{DoxyParamCaption}\item[{std\+::string \&}]{s }\end{DoxyParamCaption})}
+
+
+
+Parse response from authentication request to retrieve access token Convert J\+S\+ON response into a dictionary, parse response, retrieve access token \& store. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Raw} & authentication response string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Ashwin Singh 
+\end{DoxyAuthor}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{13                                               \{ }
+\DoxyCodeLine{14     Json::Reader reader;}
+\DoxyCodeLine{15     Json::Value obj;}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17     reader.parse(s, obj);}
+\DoxyCodeLine{18     \mbox{\hyperlink{classSpotifyAPI_ae9b06266b297641418b834112eea24e6}{access\_token}} = obj[\textcolor{stringliteral}{"access\_token"}].asString();}
+\DoxyCodeLine{19 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classSpotifyAPI_a015768af234256f2d85f85690b179463}\label{classSpotifyAPI_a015768af234256f2d85f85690b179463}} 
+\index{SpotifyAPI@{SpotifyAPI}!parseRecentTracks@{parseRecentTracks}}
+\index{parseRecentTracks@{parseRecentTracks}!SpotifyAPI@{SpotifyAPI}}
+\doxysubsubsection{\texorpdfstring{parseRecentTracks()}{parseRecentTracks()}}
+{\footnotesize\ttfamily void Spotify\+A\+P\+I\+::parse\+Recent\+Tracks (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Parse response to retrieve recently played tracks Parse raw J\+S\+ON response from Spotify A\+PI using dictionary, retrieve recently played songs \& store. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Ashwin Singh 
+\end{DoxyAuthor}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{39                                    \{}
+\DoxyCodeLine{40     Json::Reader reader;}
+\DoxyCodeLine{41     Json::Value obj;}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43     reader.parse(\mbox{\hyperlink{classSpotifyAPI_a4202bafa3fa12a99943ede3aa790ce1a}{spotify\_songs\_response}}, obj);}
+\DoxyCodeLine{44     \mbox{\hyperlink{classSpotifyAPI_a8bd6390758a75ddccd5e44efdc81ac55}{recentSongs}} = \textcolor{stringliteral}{""};}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46     \textcolor{keywordflow}{for}(Json::Value::ArrayIndex i = 0; i != obj[\textcolor{stringliteral}{"items"}].size(); i++) \{}
+\DoxyCodeLine{47         \mbox{\hyperlink{classSpotifyAPI_a8bd6390758a75ddccd5e44efdc81ac55}{recentSongs}} +=   \textcolor{stringliteral}{"Song: "} + obj[\textcolor{stringliteral}{"items"}][i][\textcolor{stringliteral}{"track"}][\textcolor{stringliteral}{"name"}].asString();}
+\DoxyCodeLine{48     \}}
+\DoxyCodeLine{49 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classSpotifyAPI_ae9b06266b297641418b834112eea24e6}\label{classSpotifyAPI_ae9b06266b297641418b834112eea24e6}} 
+\index{SpotifyAPI@{SpotifyAPI}!access\_token@{access\_token}}
+\index{access\_token@{access\_token}!SpotifyAPI@{SpotifyAPI}}
+\doxysubsubsection{\texorpdfstring{access\_token}{access\_token}}
+{\footnotesize\ttfamily std\+::string Spotify\+A\+P\+I\+::access\+\_\+token\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classSpotifyAPI_ab977f7655481148ec4852a53dac944a2}\label{classSpotifyAPI_ab977f7655481148ec4852a53dac944a2}} 
+\index{SpotifyAPI@{SpotifyAPI}!base\_64\_encoding\_auth\_request@{base\_64\_encoding\_auth\_request}}
+\index{base\_64\_encoding\_auth\_request@{base\_64\_encoding\_auth\_request}!SpotifyAPI@{SpotifyAPI}}
+\doxysubsubsection{\texorpdfstring{base\_64\_encoding\_auth\_request}{base\_64\_encoding\_auth\_request}}
+{\footnotesize\ttfamily const char$\ast$ Spotify\+A\+P\+I\+::base\+\_\+64\+\_\+encoding\+\_\+auth\+\_\+request\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classSpotifyAPI_a8e4da61fecf40a5677c275b10d771161}\label{classSpotifyAPI_a8e4da61fecf40a5677c275b10d771161}} 
+\index{SpotifyAPI@{SpotifyAPI}!curl\_response\_make@{curl\_response\_make}}
+\index{curl\_response\_make@{curl\_response\_make}!SpotifyAPI@{SpotifyAPI}}
+\doxysubsubsection{\texorpdfstring{curl\_response\_make}{curl\_response\_make}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classCurlHelper}{Curl\+Helper}}$\ast$ Spotify\+A\+P\+I\+::curl\+\_\+response\+\_\+make\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classSpotifyAPI_a7d8befbcbeae9ec6e166ce7e1589f8d7}\label{classSpotifyAPI_a7d8befbcbeae9ec6e166ce7e1589f8d7}} 
+\index{SpotifyAPI@{SpotifyAPI}!curl\_token\_make@{curl\_token\_make}}
+\index{curl\_token\_make@{curl\_token\_make}!SpotifyAPI@{SpotifyAPI}}
+\doxysubsubsection{\texorpdfstring{curl\_token\_make}{curl\_token\_make}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classCurlHelper}{Curl\+Helper}}$\ast$ Spotify\+A\+P\+I\+::curl\+\_\+token\+\_\+make\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classSpotifyAPI_a8bd6390758a75ddccd5e44efdc81ac55}\label{classSpotifyAPI_a8bd6390758a75ddccd5e44efdc81ac55}} 
+\index{SpotifyAPI@{SpotifyAPI}!recentSongs@{recentSongs}}
+\index{recentSongs@{recentSongs}!SpotifyAPI@{SpotifyAPI}}
+\doxysubsubsection{\texorpdfstring{recentSongs}{recentSongs}}
+{\footnotesize\ttfamily std\+::string Spotify\+A\+P\+I\+::recent\+Songs\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classSpotifyAPI_a01581d1d9ec52159289057f787149c6b}\label{classSpotifyAPI_a01581d1d9ec52159289057f787149c6b}} 
+\index{SpotifyAPI@{SpotifyAPI}!refresh\_request@{refresh\_request}}
+\index{refresh\_request@{refresh\_request}!SpotifyAPI@{SpotifyAPI}}
+\doxysubsubsection{\texorpdfstring{refresh\_request}{refresh\_request}}
+{\footnotesize\ttfamily const char$\ast$ Spotify\+A\+P\+I\+::refresh\+\_\+request\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classSpotifyAPI_a6332aa85a7bcc1e380b9eeab4fe4f56b}\label{classSpotifyAPI_a6332aa85a7bcc1e380b9eeab4fe4f56b}} 
+\index{SpotifyAPI@{SpotifyAPI}!spotify\_auth\_response@{spotify\_auth\_response}}
+\index{spotify\_auth\_response@{spotify\_auth\_response}!SpotifyAPI@{SpotifyAPI}}
+\doxysubsubsection{\texorpdfstring{spotify\_auth\_response}{spotify\_auth\_response}}
+{\footnotesize\ttfamily std\+::string Spotify\+A\+P\+I\+::spotify\+\_\+auth\+\_\+response\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classSpotifyAPI_a4202bafa3fa12a99943ede3aa790ce1a}\label{classSpotifyAPI_a4202bafa3fa12a99943ede3aa790ce1a}} 
+\index{SpotifyAPI@{SpotifyAPI}!spotify\_songs\_response@{spotify\_songs\_response}}
+\index{spotify\_songs\_response@{spotify\_songs\_response}!SpotifyAPI@{SpotifyAPI}}
+\doxysubsubsection{\texorpdfstring{spotify\_songs\_response}{spotify\_songs\_response}}
+{\footnotesize\ttfamily std\+::string Spotify\+A\+P\+I\+::spotify\+\_\+songs\+\_\+response\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{SpotifyAPI_8h}{Spotify\+A\+P\+I.\+h}}\item 
+\mbox{\hyperlink{SpotifyAPI_8cpp}{Spotify\+A\+P\+I.\+cpp}}\end{DoxyCompactItemize}

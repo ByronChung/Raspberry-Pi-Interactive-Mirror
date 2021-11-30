@@ -1,0 +1,150 @@
+\hypertarget{classWeatherAPI}{}\doxysection{Weather\+A\+PI Class Reference}
+\label{classWeatherAPI}\index{WeatherAPI@{WeatherAPI}}
+
+
+Class used to interface with Weather A\+PI Class performs A\+PI call to fetch recently weather data from London, England.  
+
+
+
+
+{\ttfamily \#include $<$Weather\+A\+P\+I.\+h$>$}
+
+
+
+Inheritance diagram for Weather\+A\+PI\+:
+% FIG 0
+
+
+Collaboration diagram for Weather\+A\+PI\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWeatherAPI_a65ced0b251e94683b762375e94a4ef66}{Weather\+A\+PI}} ()
+\item 
+\mbox{\hyperlink{classWeatherAPI_a9c1450aa343eba866e89e19967cd87b0}{$\sim$\+Weather\+A\+PI}} ()=default
+\item 
+void \mbox{\hyperlink{classWeatherAPI_acad9e43de4d7a4aff721142776174d8f}{parse\+String}} (std\+::string \&response)
+\begin{DoxyCompactList}\small\item\em Parse response from A\+PI request to retrieve weather data Convert J\+S\+ON response into a dictionary, parse response, retrieve weather data \& store. \end{DoxyCompactList}\item 
+std\+::string \& \mbox{\hyperlink{classWeatherAPI_a39e168e23968e652c3d0c2109669a703}{call}} () override
+\begin{DoxyCompactList}\small\item\em Implemented function based on \mbox{\hyperlink{classAPIInterface}{A\+P\+I\+Interface}}; Perform weather data A\+PI call, parse and store response Using c\+U\+RL, perform H\+T\+TP request to weather data server using A\+P\+I-\/key for access, then parse the raw J\+S\+ON response in \mbox{\hyperlink{classWeatherAPI_acad9e43de4d7a4aff721142776174d8f}{parse\+String()}} member function \& return resultant string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classWeatherAPI_a98980a3f34a1c509541e6fe17f2e7004}{weather\+\_\+response}}
+\item 
+\mbox{\hyperlink{classCurlHelper}{Curl\+Helper}} $\ast$ \mbox{\hyperlink{classWeatherAPI_a4fcc3e46768a6f4b2251845a165726c9}{curl\+\_\+response\+\_\+make}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class used to interface with Weather A\+PI Class performs A\+PI call to fetch recently weather data from London, England. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classWeatherAPI_a65ced0b251e94683b762375e94a4ef66}\label{classWeatherAPI_a65ced0b251e94683b762375e94a4ef66}} 
+\index{WeatherAPI@{WeatherAPI}!WeatherAPI@{WeatherAPI}}
+\index{WeatherAPI@{WeatherAPI}!WeatherAPI@{WeatherAPI}}
+\doxysubsubsection{\texorpdfstring{WeatherAPI()}{WeatherAPI()}}
+{\footnotesize\ttfamily Weather\+A\+P\+I\+::\+Weather\+A\+PI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{3 \{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classWeatherAPI_a9c1450aa343eba866e89e19967cd87b0}\label{classWeatherAPI_a9c1450aa343eba866e89e19967cd87b0}} 
+\index{WeatherAPI@{WeatherAPI}!````~WeatherAPI@{$\sim$WeatherAPI}}
+\index{````~WeatherAPI@{$\sim$WeatherAPI}!WeatherAPI@{WeatherAPI}}
+\doxysubsubsection{\texorpdfstring{$\sim$WeatherAPI()}{~WeatherAPI()}}
+{\footnotesize\ttfamily Weather\+A\+P\+I\+::$\sim$\+Weather\+A\+PI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classWeatherAPI_a39e168e23968e652c3d0c2109669a703}\label{classWeatherAPI_a39e168e23968e652c3d0c2109669a703}} 
+\index{WeatherAPI@{WeatherAPI}!call@{call}}
+\index{call@{call}!WeatherAPI@{WeatherAPI}}
+\doxysubsubsection{\texorpdfstring{call()}{call()}}
+{\footnotesize\ttfamily std\+::string \& Weather\+A\+P\+I\+::call (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implemented function based on \mbox{\hyperlink{classAPIInterface}{A\+P\+I\+Interface}}; Perform weather data A\+PI call, parse and store response Using c\+U\+RL, perform H\+T\+TP request to weather data server using A\+P\+I-\/key for access, then parse the raw J\+S\+ON response in \mbox{\hyperlink{classWeatherAPI_acad9e43de4d7a4aff721142776174d8f}{parse\+String()}} member function \& return resultant string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Formatted string of weather statistics 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Ashwin Singh 
+\end{DoxyAuthor}
+
+
+Implements \mbox{\hyperlink{classAPIInterface_acfbf0916484ebab8ff7475c4d8a49833}{A\+P\+I\+Interface}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{14                             \{}
+\DoxyCodeLine{15     \mbox{\hyperlink{classWeatherAPI_a4fcc3e46768a6f4b2251845a165726c9}{curl\_response\_make}} = \textcolor{keyword}{new} \mbox{\hyperlink{classCurlHelper}{CurlHelper}}(NULL, \textcolor{stringliteral}{"http://api.weatherapi.com/v1/current.json?key=8237af53843644a486f41015213110\&q=London"}, \textcolor{stringliteral}{"GET"});}
+\DoxyCodeLine{16     \mbox{\hyperlink{classWeatherAPI_a98980a3f34a1c509541e6fe17f2e7004}{weather\_response}} = \mbox{\hyperlink{classWeatherAPI_a4fcc3e46768a6f4b2251845a165726c9}{curl\_response\_make}}-\/>\mbox{\hyperlink{classCurlHelper_a9429fc67cd5b674d10c7b76c0d5eb26e}{get\_response}}();    }
+\DoxyCodeLine{17     \mbox{\hyperlink{classWeatherAPI_acad9e43de4d7a4aff721142776174d8f}{parseString}}(\mbox{\hyperlink{classWeatherAPI_a98980a3f34a1c509541e6fe17f2e7004}{weather\_response}});}
+\DoxyCodeLine{18     \textcolor{keywordflow}{return} \mbox{\hyperlink{classWeatherAPI_a98980a3f34a1c509541e6fe17f2e7004}{weather\_response}};}
+\DoxyCodeLine{19 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classWeatherAPI_acad9e43de4d7a4aff721142776174d8f}\label{classWeatherAPI_acad9e43de4d7a4aff721142776174d8f}} 
+\index{WeatherAPI@{WeatherAPI}!parseString@{parseString}}
+\index{parseString@{parseString}!WeatherAPI@{WeatherAPI}}
+\doxysubsubsection{\texorpdfstring{parseString()}{parseString()}}
+{\footnotesize\ttfamily void Weather\+A\+P\+I\+::parse\+String (\begin{DoxyParamCaption}\item[{std\+::string \&}]{response }\end{DoxyParamCaption})}
+
+
+
+Parse response from A\+PI request to retrieve weather data Convert J\+S\+ON response into a dictionary, parse response, retrieve weather data \& store. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Raw} & J\+S\+ON weather data response string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Ashwin Singh 
+\end{DoxyAuthor}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{6                                                 \{   }
+\DoxyCodeLine{7     Json::Reader reader;}
+\DoxyCodeLine{8     Json::Value json\_response;}
+\DoxyCodeLine{9     reader.parse(response, json\_response);}
+\DoxyCodeLine{10     \mbox{\hyperlink{classWeatherAPI_a98980a3f34a1c509541e6fe17f2e7004}{weather\_response}} = \textcolor{stringliteral}{"Temperature (C): "} + json\_response[\textcolor{stringliteral}{"current"}][\textcolor{stringliteral}{"temp\_c"}].asString() + \textcolor{stringliteral}{", Feels Like (C): "} + json\_response[\textcolor{stringliteral}{"current"}][\textcolor{stringliteral}{"feelslike\_c"}].asString();}
+\DoxyCodeLine{11 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classWeatherAPI_a4fcc3e46768a6f4b2251845a165726c9}\label{classWeatherAPI_a4fcc3e46768a6f4b2251845a165726c9}} 
+\index{WeatherAPI@{WeatherAPI}!curl\_response\_make@{curl\_response\_make}}
+\index{curl\_response\_make@{curl\_response\_make}!WeatherAPI@{WeatherAPI}}
+\doxysubsubsection{\texorpdfstring{curl\_response\_make}{curl\_response\_make}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classCurlHelper}{Curl\+Helper}}$\ast$ Weather\+A\+P\+I\+::curl\+\_\+response\+\_\+make\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classWeatherAPI_a98980a3f34a1c509541e6fe17f2e7004}\label{classWeatherAPI_a98980a3f34a1c509541e6fe17f2e7004}} 
+\index{WeatherAPI@{WeatherAPI}!weather\_response@{weather\_response}}
+\index{weather\_response@{weather\_response}!WeatherAPI@{WeatherAPI}}
+\doxysubsubsection{\texorpdfstring{weather\_response}{weather\_response}}
+{\footnotesize\ttfamily std\+::string Weather\+A\+P\+I\+::weather\+\_\+response\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{WeatherAPI_8h}{Weather\+A\+P\+I.\+h}}\item 
+\mbox{\hyperlink{WeatherAPI_8cpp}{Weather\+A\+P\+I.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,58 @@
+\hypertarget{classAPIInterface}{}\doxysection{A\+P\+I\+Interface Class Reference}
+\label{classAPIInterface}\index{APIInterface@{APIInterface}}
+
+
+Interface to define general A\+PI object Different types of A\+PI objects implement interface (evident by pure virtual function); created to implement Factory design pattern and reduce coupling.  
+
+
+
+
+{\ttfamily \#include $<$A\+P\+I\+Interface.\+h$>$}
+
+
+
+Inheritance diagram for A\+P\+I\+Interface\+:
+% FIG 0
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual std\+::string \& \mbox{\hyperlink{classAPIInterface_acfbf0916484ebab8ff7475c4d8a49833}{call}} ()=0
+\begin{DoxyCompactList}\small\item\em Call A\+PI and return response string Perform A\+PI authentication (if needed), make request, parse raw J\+S\+ON response into a formatted string and return to UI for display. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface to define general A\+PI object Different types of A\+PI objects implement interface (evident by pure virtual function); created to implement Factory design pattern and reduce coupling. 
+
+\begin{DoxyAuthor}{Author}
+Ashwin Singh 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classAPIInterface_acfbf0916484ebab8ff7475c4d8a49833}\label{classAPIInterface_acfbf0916484ebab8ff7475c4d8a49833}} 
+\index{APIInterface@{APIInterface}!call@{call}}
+\index{call@{call}!APIInterface@{APIInterface}}
+\doxysubsubsection{\texorpdfstring{call()}{call()}}
+{\footnotesize\ttfamily virtual std\+::string\& A\+P\+I\+Interface\+::call (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Call A\+PI and return response string Perform A\+PI authentication (if needed), make request, parse raw J\+S\+ON response into a formatted string and return to UI for display. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Address of response string 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classSpotifyAPI_a17d73aace5f5bef0ab6cf0aa6200f814}{Spotify\+A\+PI}}, and \mbox{\hyperlink{classWeatherAPI_a39e168e23968e652c3d0c2109669a703}{Weather\+A\+PI}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{APIInterface_8h}{A\+P\+I\+Interface.\+h}}\end{DoxyCompactItemize}

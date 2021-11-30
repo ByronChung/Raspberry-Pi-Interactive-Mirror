@@ -51,11 +51,19 @@ class mainwindow : public QMainWindow { //Inherit from QMainWindow class to disp
 		 @author Ashwin Singh
 		 */
 		void onSensorReading(std::string reading);
+  		/*!
+         @brief button, label , and Model Object Declarations for UI Display
+         @author Pablo Ortega, Byron Chung
+         */
 	private:
 		QPushButton *btn_1;
 		QPushButton *btn_2;
+  		QPushButton *btn_3;
+  		QPushButton *btn_4;
 		QLabel *text_1;
 		QLabel *text_2;
+  		QLabel *text_3;
+  		QLabel *text_4;
 		QLabel *sensor_text;
 		Model *m;
 

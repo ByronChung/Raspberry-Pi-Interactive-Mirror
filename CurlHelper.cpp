@@ -10,6 +10,7 @@ size_t CurlHelper::writefunc(void *ptr, size_t size, size_t nmemb, std::string *
 
 //Constructor to set up HTTP request and retrieve response using CURL
 CurlHelper::CurlHelper(struct curl_slist* headers, std::string url, std::string req_type) {
+	//cURL a C-based library, therefore convert C++ style strings to C-strings
 	const char* curl_url = url.c_str();
 	const char* curl_req_type = req_type.c_str();
 
@@ -19,18 +20,20 @@ CurlHelper::CurlHelper(struct curl_slist* headers, std::string url, std::string 
 	if(curl) {
 		curl_easy_setopt(curl, CURLOPT_URL, curl_url);
 		
+		//Append headers if any passed
 		if(headers != NULL) {
 			curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
 		}
 		
-		
+		//Modify user agent so server knows what type of device sends request
 		curl_easy_setopt(curl, CURLOPT_USERAGENT, "curl/7.68.0");
 		curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST, curl_req_type);
 		
-		
+		//Setup callback function to parse transferred data & store to variable
 		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, writefunc);
 		curl_easy_setopt(curl, CURLOPT_WRITEDATA, &response);
 
+		//Perform HTTP request, clean up & exit
 		curl_easy_perform(curl);
 		curl_easy_cleanup(curl);
 	}

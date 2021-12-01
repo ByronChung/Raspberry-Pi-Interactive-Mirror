@@ -1,0 +1,164 @@
+\hypertarget{classTimeAPI}{}\doxysection{Time\+A\+PI Class Reference}
+\label{classTimeAPI}\index{TimeAPI@{TimeAPI}}
+
+
+{\ttfamily \#include $<$Time\+A\+P\+I.\+h$>$}
+
+
+
+Inheritance diagram for Time\+A\+PI\+:
+% FIG 0
+
+
+Collaboration diagram for Time\+A\+PI\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \& \mbox{\hyperlink{classTimeAPI_a3b0732a60a85099802bb6093ad2d08b1}{call}} () override
+\begin{DoxyCompactList}\small\item\em Implemented function based on A\+PI interface Function calls C library local-\/time function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classTimeAPI_abad4a2b9bf909ed0ed86b9a8e118f98e}{sec\+\_\+prev}}
+\item 
+std\+::stringstream \mbox{\hyperlink{classTimeAPI_a26d9f1079e7dfb5aa77cc9e89baeb382}{buffer}}
+\item 
+int \mbox{\hyperlink{classTimeAPI_adf5ca4e9e4cf7c649215fb6908b0dfe7}{seconds}}
+\item 
+int \mbox{\hyperlink{classTimeAPI_a792224c872eb5a4fb3c47b723f216d00}{minutes}}
+\item 
+int \mbox{\hyperlink{classTimeAPI_aef5354468e50968afb10a6d822e68089}{hours}}
+\item 
+std\+::string \mbox{\hyperlink{classTimeAPI_a440c57301cffd434d897f7f783930386}{str}}
+\item 
+time\+\_\+t \mbox{\hyperlink{classTimeAPI_a09682b1bec9a9598a5840524781d4c95}{total\+\_\+seconds}}
+\item 
+struct tm $\ast$ \mbox{\hyperlink{classTimeAPI_a770f5f56a4e79c8b48e0b3ffdcb6c753}{ct}}
+\item 
+std\+::string \mbox{\hyperlink{classTimeAPI_a2faeffbc148353015b73bbc282186447}{output}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classTimeAPI_a3b0732a60a85099802bb6093ad2d08b1}\label{classTimeAPI_a3b0732a60a85099802bb6093ad2d08b1}} 
+\index{TimeAPI@{TimeAPI}!call@{call}}
+\index{call@{call}!TimeAPI@{TimeAPI}}
+\doxysubsubsection{\texorpdfstring{call()}{call()}}
+{\footnotesize\ttfamily std\+::string \& Time\+A\+P\+I\+::call (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implemented function based on A\+PI interface Function calls C library local-\/time function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+formatted current time 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Byron Chung, Pablo Ortega, Ashvinder Suri, Saad Ali 
+\end{DoxyAuthor}
+
+
+Implements \mbox{\hyperlink{classAPIInterface_acfbf0916484ebab8ff7475c4d8a49833}{A\+P\+I\+Interface}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{7 \{}
+\DoxyCodeLine{8     stringstream \mbox{\hyperlink{classTimeAPI_a26d9f1079e7dfb5aa77cc9e89baeb382}{buffer}}; \textcolor{comment}{//a}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10     \textcolor{keywordtype}{int} \mbox{\hyperlink{classTimeAPI_adf5ca4e9e4cf7c649215fb6908b0dfe7}{seconds}}, \mbox{\hyperlink{classTimeAPI_a792224c872eb5a4fb3c47b723f216d00}{minutes}}, \mbox{\hyperlink{classTimeAPI_aef5354468e50968afb10a6d822e68089}{hours}};}
+\DoxyCodeLine{11     \textcolor{keywordtype}{string} \mbox{\hyperlink{classTimeAPI_a440c57301cffd434d897f7f783930386}{str}};}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13     \textcolor{comment}{//Storing total seconds}}
+\DoxyCodeLine{14     time\_t \mbox{\hyperlink{classTimeAPI_a09682b1bec9a9598a5840524781d4c95}{total\_seconds}}=time(0);}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16     \textcolor{comment}{//Getting values of seconds, minutes and hours}}
+\DoxyCodeLine{17     \textcolor{keyword}{struct }tm* \mbox{\hyperlink{classTimeAPI_a770f5f56a4e79c8b48e0b3ffdcb6c753}{ct}}=localtime(\&\mbox{\hyperlink{classTimeAPI_a09682b1bec9a9598a5840524781d4c95}{total\_seconds}});}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19     \mbox{\hyperlink{classTimeAPI_adf5ca4e9e4cf7c649215fb6908b0dfe7}{seconds}}=\mbox{\hyperlink{classTimeAPI_a770f5f56a4e79c8b48e0b3ffdcb6c753}{ct}}-\/>tm\_sec;}
+\DoxyCodeLine{20     \mbox{\hyperlink{classTimeAPI_a792224c872eb5a4fb3c47b723f216d00}{minutes}}=\mbox{\hyperlink{classTimeAPI_a770f5f56a4e79c8b48e0b3ffdcb6c753}{ct}}-\/>tm\_min;}
+\DoxyCodeLine{21     \mbox{\hyperlink{classTimeAPI_aef5354468e50968afb10a6d822e68089}{hours}}=\mbox{\hyperlink{classTimeAPI_a770f5f56a4e79c8b48e0b3ffdcb6c753}{ct}}-\/>tm\_hour;}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23     \textcolor{comment}{//Converting it into 12 hour format}}
+\DoxyCodeLine{24     \textcolor{keywordflow}{if}(\mbox{\hyperlink{classTimeAPI_aef5354468e50968afb10a6d822e68089}{hours}}>=12)}
+\DoxyCodeLine{25       \mbox{\hyperlink{classTimeAPI_a440c57301cffd434d897f7f783930386}{str}}=\textcolor{stringliteral}{"PM"};}
+\DoxyCodeLine{26     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{27       \mbox{\hyperlink{classTimeAPI_a440c57301cffd434d897f7f783930386}{str}}=\textcolor{stringliteral}{"AM"};}
+\DoxyCodeLine{28     \mbox{\hyperlink{classTimeAPI_aef5354468e50968afb10a6d822e68089}{hours}}=\mbox{\hyperlink{classTimeAPI_aef5354468e50968afb10a6d822e68089}{hours}}>12?\mbox{\hyperlink{classTimeAPI_aef5354468e50968afb10a6d822e68089}{hours}}-\/12:\mbox{\hyperlink{classTimeAPI_aef5354468e50968afb10a6d822e68089}{hours}};}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30     \mbox{\hyperlink{classTimeAPI_a26d9f1079e7dfb5aa77cc9e89baeb382}{buffer}} << (\mbox{\hyperlink{classTimeAPI_aef5354468e50968afb10a6d822e68089}{hours}}<10?\textcolor{stringliteral}{"0"}:\textcolor{stringliteral}{""}) << \mbox{\hyperlink{classTimeAPI_aef5354468e50968afb10a6d822e68089}{hours}} <<\textcolor{stringliteral}{":"} << (\mbox{\hyperlink{classTimeAPI_a792224c872eb5a4fb3c47b723f216d00}{minutes}}<10?\textcolor{stringliteral}{"0"}:\textcolor{stringliteral}{""}) << \mbox{\hyperlink{classTimeAPI_a792224c872eb5a4fb3c47b723f216d00}{minutes}} << \textcolor{stringliteral}{":"} << (\mbox{\hyperlink{classTimeAPI_adf5ca4e9e4cf7c649215fb6908b0dfe7}{seconds}}<10?\textcolor{stringliteral}{"0"}:\textcolor{stringliteral}{""}) << \mbox{\hyperlink{classTimeAPI_adf5ca4e9e4cf7c649215fb6908b0dfe7}{seconds}} << \textcolor{stringliteral}{" "} << \mbox{\hyperlink{classTimeAPI_a440c57301cffd434d897f7f783930386}{str}} <<endl;}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32     \mbox{\hyperlink{classTimeAPI_a2faeffbc148353015b73bbc282186447}{output}} = \mbox{\hyperlink{classTimeAPI_a26d9f1079e7dfb5aa77cc9e89baeb382}{buffer}}.str();}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34     \textcolor{keywordflow}{return} \mbox{\hyperlink{classTimeAPI_a2faeffbc148353015b73bbc282186447}{output}};}
+\DoxyCodeLine{35 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classTimeAPI_a26d9f1079e7dfb5aa77cc9e89baeb382}\label{classTimeAPI_a26d9f1079e7dfb5aa77cc9e89baeb382}} 
+\index{TimeAPI@{TimeAPI}!buffer@{buffer}}
+\index{buffer@{buffer}!TimeAPI@{TimeAPI}}
+\doxysubsubsection{\texorpdfstring{buffer}{buffer}}
+{\footnotesize\ttfamily std\+::stringstream Time\+A\+P\+I\+::buffer\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classTimeAPI_a770f5f56a4e79c8b48e0b3ffdcb6c753}\label{classTimeAPI_a770f5f56a4e79c8b48e0b3ffdcb6c753}} 
+\index{TimeAPI@{TimeAPI}!ct@{ct}}
+\index{ct@{ct}!TimeAPI@{TimeAPI}}
+\doxysubsubsection{\texorpdfstring{ct}{ct}}
+{\footnotesize\ttfamily struct tm$\ast$ Time\+A\+P\+I\+::ct\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classTimeAPI_aef5354468e50968afb10a6d822e68089}\label{classTimeAPI_aef5354468e50968afb10a6d822e68089}} 
+\index{TimeAPI@{TimeAPI}!hours@{hours}}
+\index{hours@{hours}!TimeAPI@{TimeAPI}}
+\doxysubsubsection{\texorpdfstring{hours}{hours}}
+{\footnotesize\ttfamily int Time\+A\+P\+I\+::hours\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classTimeAPI_a792224c872eb5a4fb3c47b723f216d00}\label{classTimeAPI_a792224c872eb5a4fb3c47b723f216d00}} 
+\index{TimeAPI@{TimeAPI}!minutes@{minutes}}
+\index{minutes@{minutes}!TimeAPI@{TimeAPI}}
+\doxysubsubsection{\texorpdfstring{minutes}{minutes}}
+{\footnotesize\ttfamily int Time\+A\+P\+I\+::minutes\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classTimeAPI_a2faeffbc148353015b73bbc282186447}\label{classTimeAPI_a2faeffbc148353015b73bbc282186447}} 
+\index{TimeAPI@{TimeAPI}!output@{output}}
+\index{output@{output}!TimeAPI@{TimeAPI}}
+\doxysubsubsection{\texorpdfstring{output}{output}}
+{\footnotesize\ttfamily std\+::string Time\+A\+P\+I\+::output\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classTimeAPI_abad4a2b9bf909ed0ed86b9a8e118f98e}\label{classTimeAPI_abad4a2b9bf909ed0ed86b9a8e118f98e}} 
+\index{TimeAPI@{TimeAPI}!sec\_prev@{sec\_prev}}
+\index{sec\_prev@{sec\_prev}!TimeAPI@{TimeAPI}}
+\doxysubsubsection{\texorpdfstring{sec\_prev}{sec\_prev}}
+{\footnotesize\ttfamily int Time\+A\+P\+I\+::sec\+\_\+prev\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classTimeAPI_adf5ca4e9e4cf7c649215fb6908b0dfe7}\label{classTimeAPI_adf5ca4e9e4cf7c649215fb6908b0dfe7}} 
+\index{TimeAPI@{TimeAPI}!seconds@{seconds}}
+\index{seconds@{seconds}!TimeAPI@{TimeAPI}}
+\doxysubsubsection{\texorpdfstring{seconds}{seconds}}
+{\footnotesize\ttfamily int Time\+A\+P\+I\+::seconds\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classTimeAPI_a440c57301cffd434d897f7f783930386}\label{classTimeAPI_a440c57301cffd434d897f7f783930386}} 
+\index{TimeAPI@{TimeAPI}!str@{str}}
+\index{str@{str}!TimeAPI@{TimeAPI}}
+\doxysubsubsection{\texorpdfstring{str}{str}}
+{\footnotesize\ttfamily std\+::string Time\+A\+P\+I\+::str\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classTimeAPI_a09682b1bec9a9598a5840524781d4c95}\label{classTimeAPI_a09682b1bec9a9598a5840524781d4c95}} 
+\index{TimeAPI@{TimeAPI}!total\_seconds@{total\_seconds}}
+\index{total\_seconds@{total\_seconds}!TimeAPI@{TimeAPI}}
+\doxysubsubsection{\texorpdfstring{total\_seconds}{total\_seconds}}
+{\footnotesize\ttfamily time\+\_\+t Time\+A\+P\+I\+::total\+\_\+seconds\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{TimeAPI_8h}{Time\+A\+P\+I.\+h}}\item 
+\mbox{\hyperlink{TimeAPI_8cpp}{Time\+A\+P\+I.\+cpp}}\end{DoxyCompactItemize}

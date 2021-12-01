@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['spotifyapi_551',['SpotifyAPI',['../classSpotifyAPI.html',1,'']]]
+  ['spotifyapi_579',['SpotifyAPI',['../classSpotifyAPI.html',1,'']]]
 ];

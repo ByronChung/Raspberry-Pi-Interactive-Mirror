@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['qt_5fmeta_5fdata_5fmainwindow_610',['qt_meta_data_mainwindow',['../moc__mainwindow_8cpp.html#a0838cec7aaa8646455d1ed05da200cf5',1,'moc_mainwindow.cpp']]],
-  ['qt_5fmeta_5fdata_5fmotionsensorthread_611',['qt_meta_data_MotionSensorThread',['../moc__MotionSensorThread_8cpp.html#a7f6864bc1567b3d5b5a4b816369deadb',1,'moc_MotionSensorThread.cpp']]],
-  ['qt_5fmeta_5fstringdata_5fmainwindow_612',['qt_meta_stringdata_mainwindow',['../moc__mainwindow_8cpp.html#a2c0be6b7fa17605ae7599888b10d958e',1,'moc_mainwindow.cpp']]],
-  ['qt_5fmeta_5fstringdata_5fmotionsensorthread_613',['qt_meta_stringdata_MotionSensorThread',['../moc__MotionSensorThread_8cpp.html#aaa0a6c33593f9f0c04c6bf1e60a840bc',1,'moc_MotionSensorThread.cpp']]]
+  ['m_654',['m',['../classmainwindow.html#afcf4535939b3bf0a0aa47b954876f65c',1,'mainwindow']]],
+  ['minutes_655',['minutes',['../classTimeAPI.html#a792224c872eb5a4fb3c47b723f216d00',1,'TimeAPI']]]
 ];

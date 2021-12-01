@@ -73,26 +73,30 @@ $(function() {
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="APIInterface_8h.html">APIInterface.h</a>&quot;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="WeatherAPI_8h.html">WeatherAPI.h</a>&quot;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="SpotifyAPI_8h.html">SpotifyAPI.h</a>&quot;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="CurlHelper_8h.html">CurlHelper.h</a>&quot;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="classAPIFactory.html">   16</a></span>&#160;<span class="keyword">class </span><a class="code" href="classAPIFactory.html">APIFactory</a> {</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <a class="code" href="classAPIFactory.html#a8cfc5acfafca94a576d352f32adb4af7">APIFactory</a>();</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <a class="code" href="classAPIFactory.html#a64ee84572bd79cdfd1158839c598f7f4">~APIFactory</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <a class="code" href="classAPIInterface.html">APIInterface</a>* <a class="code" href="classAPIFactory.html#a06c8b54e8cde2c72f4501d8a583aa58b">getAPI</a>(std::string&amp; api_id);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;};</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="TwitterAPI_8h.html">TwitterAPI.h</a>&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="TimeAPI_8h.html">TimeAPI.h</a>&quot;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="CurlHelper_8h.html">CurlHelper.h</a>&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classAPIFactory.html">   18</a></span>&#160;<span class="keyword">class </span><a class="code" href="classAPIFactory.html">APIFactory</a> {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <a class="code" href="classAPIFactory.html#a8cfc5acfafca94a576d352f32adb4af7">APIFactory</a>();</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <a class="code" href="classAPIFactory.html#a64ee84572bd79cdfd1158839c598f7f4">~APIFactory</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <a class="code" href="classAPIInterface.html">APIInterface</a>* <a class="code" href="classAPIFactory.html#a06c8b54e8cde2c72f4501d8a583aa58b">getAPI</a>(std::string&amp; api_id);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;};</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassAPIFactory_html_a64ee84572bd79cdfd1158839c598f7f4"><div class="ttname"><a href="classAPIFactory.html#a64ee84572bd79cdfd1158839c598f7f4">APIFactory::~APIFactory</a></div><div class="ttdeci">~APIFactory()=default</div></div>
 <div class="ttc" id="aAPIInterface_8h_html"><div class="ttname"><a href="APIInterface_8h.html">APIInterface.h</a></div></div>
-<div class="ttc" id="aclassAPIFactory_html"><div class="ttname"><a href="classAPIFactory.html">APIFactory</a></div><div class="ttdoc">API Factory to return types of API objects depending on what client requested Class uses string passe...</div><div class="ttdef"><b>Definition:</b> APIFactory.h:16</div></div>
+<div class="ttc" id="aclassAPIFactory_html"><div class="ttname"><a href="classAPIFactory.html">APIFactory</a></div><div class="ttdoc">API Factory to return types of API objects depending on what client requested Class uses string passe...</div><div class="ttdef"><b>Definition:</b> APIFactory.h:18</div></div>
 <div class="ttc" id="aclassAPIInterface_html"><div class="ttname"><a href="classAPIInterface.html">APIInterface</a></div><div class="ttdoc">Interface to define general API object Different types of API objects implement interface (evident by...</div><div class="ttdef"><b>Definition:</b> APIInterface.h:12</div></div>
 <div class="ttc" id="aSpotifyAPI_8h_html"><div class="ttname"><a href="SpotifyAPI_8h.html">SpotifyAPI.h</a></div></div>
+<div class="ttc" id="aTimeAPI_8h_html"><div class="ttname"><a href="TimeAPI_8h.html">TimeAPI.h</a></div></div>
 <div class="ttc" id="aclassAPIFactory_html_a8cfc5acfafca94a576d352f32adb4af7"><div class="ttname"><a href="classAPIFactory.html#a8cfc5acfafca94a576d352f32adb4af7">APIFactory::APIFactory</a></div><div class="ttdeci">APIFactory()</div><div class="ttdef"><b>Definition:</b> APIFactory.cpp:5</div></div>
 <div class="ttc" id="aWeatherAPI_8h_html"><div class="ttname"><a href="WeatherAPI_8h.html">WeatherAPI.h</a></div></div>
 <div class="ttc" id="aCurlHelper_8h_html"><div class="ttname"><a href="CurlHelper_8h.html">CurlHelper.h</a></div></div>
+<div class="ttc" id="aTwitterAPI_8h_html"><div class="ttname"><a href="TwitterAPI_8h.html">TwitterAPI.h</a></div></div>
 <div class="ttc" id="aclassAPIFactory_html_a06c8b54e8cde2c72f4501d8a583aa58b"><div class="ttname"><a href="classAPIFactory.html#a06c8b54e8cde2c72f4501d8a583aa58b">APIFactory::getAPI</a></div><div class="ttdeci">APIInterface * getAPI(std::string &amp;api_id)</div><div class="ttdoc">Return API object given a certain string Construct specific API object given string passed from butto...</div><div class="ttdef"><b>Definition:</b> APIFactory.cpp:7</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

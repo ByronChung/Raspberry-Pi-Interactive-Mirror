@@ -15,6 +15,7 @@ class CurlHelper {
 		/*!
  		 @brief Constructor to perform cURL set up and make request
  		 Setup headers, parameters and HTTP request type, then cURL performs request & stores raw data to the class member response
+		 @author Ashwin Singh
 		 @param struct containing request headers, URL string, and request-type string
 		 @return None
 		*/

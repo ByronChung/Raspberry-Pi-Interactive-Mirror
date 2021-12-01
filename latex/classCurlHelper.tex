@@ -49,6 +49,9 @@ Ashwin Singh
 
 Constructor to perform c\+U\+RL set up and make request Setup headers, parameters and H\+T\+TP request type, then c\+U\+RL performs request \& stores raw data to the class member response. 
 
+\begin{DoxyAuthor}{Author}
+Ashwin Singh 
+\end{DoxyAuthor}
 
 \begin{DoxyParams}{Parameters}
 {\em struct} & containing request headers, U\+RL string, and request-\/type string \\
@@ -60,31 +63,34 @@ None
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{12                                                                                     \{}
-\DoxyCodeLine{13     \textcolor{keyword}{const} \textcolor{keywordtype}{char}* curl\_url = url.c\_str();}
-\DoxyCodeLine{14     \textcolor{keyword}{const} \textcolor{keywordtype}{char}* curl\_req\_type = req\_type.c\_str();}
-\DoxyCodeLine{15 }
+\DoxyCodeLine{13     \textcolor{comment}{//cURL a C-\/based library, therefore convert C++ style strings to C-\/strings}}
+\DoxyCodeLine{14     \textcolor{keyword}{const} \textcolor{keywordtype}{char}* curl\_url = url.c\_str();}
+\DoxyCodeLine{15     \textcolor{keyword}{const} \textcolor{keywordtype}{char}* curl\_req\_type = req\_type.c\_str();}
 \DoxyCodeLine{16 }
-\DoxyCodeLine{17     CURL *curl = curl\_easy\_init();}
-\DoxyCodeLine{18 }
-\DoxyCodeLine{19     \textcolor{keywordflow}{if}(curl) \{}
-\DoxyCodeLine{20         curl\_easy\_setopt(curl, CURLOPT\_URL, curl\_url);}
-\DoxyCodeLine{21         }
-\DoxyCodeLine{22         \textcolor{keywordflow}{if}(headers != NULL) \{}
-\DoxyCodeLine{23             curl\_easy\_setopt(curl, CURLOPT\_HTTPHEADER, headers);}
-\DoxyCodeLine{24         \}}
-\DoxyCodeLine{25         }
-\DoxyCodeLine{26         }
-\DoxyCodeLine{27         curl\_easy\_setopt(curl, CURLOPT\_USERAGENT, \textcolor{stringliteral}{"curl/7.68.0"});}
-\DoxyCodeLine{28         curl\_easy\_setopt(curl, CURLOPT\_CUSTOMREQUEST, curl\_req\_type);}
-\DoxyCodeLine{29         }
-\DoxyCodeLine{30         }
-\DoxyCodeLine{31         curl\_easy\_setopt(curl, CURLOPT\_WRITEFUNCTION, \mbox{\hyperlink{classCurlHelper_acf6a643c1acd2350a6097ffe97b0fb67}{writefunc}});}
-\DoxyCodeLine{32         curl\_easy\_setopt(curl, CURLOPT\_WRITEDATA, \&\mbox{\hyperlink{classCurlHelper_af32df0b8e2db4f1f4ff74cfaf1775990}{response}});}
-\DoxyCodeLine{33 }
-\DoxyCodeLine{34         curl\_easy\_perform(curl);}
-\DoxyCodeLine{35         curl\_easy\_cleanup(curl);}
-\DoxyCodeLine{36     \}}
-\DoxyCodeLine{37 \}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18     CURL *curl = curl\_easy\_init();}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20     \textcolor{keywordflow}{if}(curl) \{}
+\DoxyCodeLine{21         curl\_easy\_setopt(curl, CURLOPT\_URL, curl\_url);}
+\DoxyCodeLine{22         }
+\DoxyCodeLine{23         \textcolor{comment}{//Append headers if any passed}}
+\DoxyCodeLine{24         \textcolor{keywordflow}{if}(headers != NULL) \{}
+\DoxyCodeLine{25             curl\_easy\_setopt(curl, CURLOPT\_HTTPHEADER, headers);}
+\DoxyCodeLine{26         \}}
+\DoxyCodeLine{27         }
+\DoxyCodeLine{28         \textcolor{comment}{//Modify user agent so server knows what type of device sends request}}
+\DoxyCodeLine{29         curl\_easy\_setopt(curl, CURLOPT\_USERAGENT, \textcolor{stringliteral}{"curl/7.68.0"});}
+\DoxyCodeLine{30         curl\_easy\_setopt(curl, CURLOPT\_CUSTOMREQUEST, curl\_req\_type);}
+\DoxyCodeLine{31         }
+\DoxyCodeLine{32         \textcolor{comment}{//Setup callback function to parse transferred data \& store to variable}}
+\DoxyCodeLine{33         curl\_easy\_setopt(curl, CURLOPT\_WRITEFUNCTION, \mbox{\hyperlink{classCurlHelper_acf6a643c1acd2350a6097ffe97b0fb67}{writefunc}});}
+\DoxyCodeLine{34         curl\_easy\_setopt(curl, CURLOPT\_WRITEDATA, \&\mbox{\hyperlink{classCurlHelper_af32df0b8e2db4f1f4ff74cfaf1775990}{response}});}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36         \textcolor{comment}{//Perform HTTP request, clean up \& exit}}
+\DoxyCodeLine{37         curl\_easy\_perform(curl);}
+\DoxyCodeLine{38         curl\_easy\_cleanup(curl);}
+\DoxyCodeLine{39     \}}
+\DoxyCodeLine{40 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classCurlHelper_a4b5be62b757f35fecf9150dc4efb83aa}\label{classCurlHelper_a4b5be62b757f35fecf9150dc4efb83aa}} 
@@ -116,9 +122,9 @@ Address of response string
 \end{DoxyReturn}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{40                                     \{}
-\DoxyCodeLine{41     \textcolor{keywordflow}{return} \mbox{\hyperlink{classCurlHelper_af32df0b8e2db4f1f4ff74cfaf1775990}{response}};}
-\DoxyCodeLine{42 \}}
+\DoxyCodeLine{43                                     \{}
+\DoxyCodeLine{44     \textcolor{keywordflow}{return} \mbox{\hyperlink{classCurlHelper_af32df0b8e2db4f1f4ff74cfaf1775990}{response}};}
+\DoxyCodeLine{45 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classCurlHelper_acf6a643c1acd2350a6097ffe97b0fb67}\label{classCurlHelper_acf6a643c1acd2350a6097ffe97b0fb67}} 

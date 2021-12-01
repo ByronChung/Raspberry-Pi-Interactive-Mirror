@@ -59,6 +59,9 @@ Ashwin Singh
 
 Return A\+PI object given a certain string Construct specific A\+PI object given string passed from button label; A\+PI object later used to perform H\+T\+TP requests to that A\+PI\textquotesingle{}s server. 
 
+\begin{DoxyAuthor}{Author}
+Ashwin Singh 
+\end{DoxyAuthor}
 
 \begin{DoxyParams}{Parameters}
 {\em Pass} & address of string specifying A\+PI object requested \\
@@ -79,8 +82,14 @@ Constructed A\+PI object
 \DoxyCodeLine{14     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(api\_id == \textcolor{stringliteral}{"spotify"}) \{}
 \DoxyCodeLine{15         api\_type = \textcolor{keyword}{new} \mbox{\hyperlink{classSpotifyAPI}{SpotifyAPI}}();}
 \DoxyCodeLine{16     \}}
-\DoxyCodeLine{17     \textcolor{keywordflow}{return} api\_type;}
-\DoxyCodeLine{18 \}   }
+\DoxyCodeLine{17     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(api\_id == \textcolor{stringliteral}{"twitter"}) \{}
+\DoxyCodeLine{18         api\_type = \textcolor{keyword}{new} \mbox{\hyperlink{classTwitterAPI}{TwitterAPI}}();}
+\DoxyCodeLine{19     \}}
+\DoxyCodeLine{20     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(api\_id == \textcolor{stringliteral}{"time"}) \{}
+\DoxyCodeLine{21         api\_type = \textcolor{keyword}{new} \mbox{\hyperlink{classTimeAPI}{TimeAPI}}();}
+\DoxyCodeLine{22     \}}
+\DoxyCodeLine{23     \textcolor{keywordflow}{return} api\_type;}
+\DoxyCodeLine{24 \}   }
 
 \end{DoxyCode}
 

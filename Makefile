@@ -35,7 +35,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = SmartMirror1.0.0
-DISTDIR = /home/pi/Documents/check/.tmp/SmartMirror1.0.0
+DISTDIR = /home/pi/Documents/added-tst/.tmp/SmartMirror1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-O1
 LIBS          = $(SUBLIBS) -ljsoncpp -lcurl -lwiringPi -lQt5Widgets -lQt5Gui -lQt5Core -lGLESv2 -lpthread -latomic 
@@ -57,6 +57,8 @@ SOURCES       = main.cpp \
 		CurlHelper.cpp \
 		SpotifyAPI.cpp \
 		WeatherAPI.cpp \
+		TimeAPI.cpp \
+		TwitterAPI.cpp \
 		MotionSensorThread.cpp moc_mainwindow.cpp \
 		moc_MotionSensorThread.cpp
 OBJECTS       = main.o \
@@ -66,6 +68,8 @@ OBJECTS       = main.o \
 		CurlHelper.o \
 		SpotifyAPI.o \
 		WeatherAPI.o \
+		TimeAPI.o \
+		TwitterAPI.o \
 		MotionSensorThread.o \
 		moc_mainwindow.o \
 		moc_MotionSensorThread.o
@@ -149,6 +153,8 @@ DIST          = /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/spec_pre.prf \
 		CurlHelper.h \
 		SpotifyAPI.h \
 		WeatherAPI.h \
+		TimeAPI.h \
+		TwitterAPI.h \
 		MotionSensorThread.h main.cpp \
 		mainwindow.cpp \
 		Model.cpp \
@@ -156,6 +162,8 @@ DIST          = /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/spec_pre.prf \
 		CurlHelper.cpp \
 		SpotifyAPI.cpp \
 		WeatherAPI.cpp \
+		TimeAPI.cpp \
+		TwitterAPI.cpp \
 		MotionSensorThread.cpp
 QMAKE_TARGET  = SmartMirror
 DESTDIR       = 
@@ -338,8 +346,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents mainwindow.h Model.h APIFactory.h APIInterface.h CurlHelper.h SpotifyAPI.h WeatherAPI.h MotionSensorThread.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp mainwindow.cpp Model.cpp APIFactory.cpp CurlHelper.cpp SpotifyAPI.cpp WeatherAPI.cpp MotionSensorThread.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents mainwindow.h Model.h APIFactory.h APIInterface.h CurlHelper.h SpotifyAPI.h WeatherAPI.h TimeAPI.h TwitterAPI.h MotionSensorThread.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp mainwindow.cpp Model.cpp APIFactory.cpp CurlHelper.cpp SpotifyAPI.cpp WeatherAPI.cpp TimeAPI.cpp TwitterAPI.cpp MotionSensorThread.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -380,16 +388,18 @@ moc_mainwindow.cpp: Model.h \
 		WeatherAPI.h \
 		CurlHelper.h \
 		SpotifyAPI.h \
+		TwitterAPI.h \
+		TimeAPI.h \
 		MotionSensorThread.h \
 		mainwindow.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/pi/Documents/check/moc_predefs.h -I/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++ -I/home/pi/Documents/check -I/usr/include/arm-linux-gnueabihf/qt5 -I/usr/include/arm-linux-gnueabihf/qt5/QtWidgets -I/usr/include/arm-linux-gnueabihf/qt5/QtGui -I/usr/include/arm-linux-gnueabihf/qt5/QtCore -I/usr/include/c++/8 -I/usr/include/arm-linux-gnueabihf/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/arm-linux-gnueabihf/8/include -I/usr/local/include -I/usr/lib/gcc/arm-linux-gnueabihf/8/include-fixed -I/usr/include/arm-linux-gnueabihf -I/usr/include mainwindow.h -o moc_mainwindow.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/pi/Documents/added-tst/moc_predefs.h -I/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++ -I/home/pi/Documents/added-tst -I/usr/include/arm-linux-gnueabihf/qt5 -I/usr/include/arm-linux-gnueabihf/qt5/QtWidgets -I/usr/include/arm-linux-gnueabihf/qt5/QtGui -I/usr/include/arm-linux-gnueabihf/qt5/QtCore -I/usr/include/c++/8 -I/usr/include/arm-linux-gnueabihf/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/arm-linux-gnueabihf/8/include -I/usr/local/include -I/usr/lib/gcc/arm-linux-gnueabihf/8/include-fixed -I/usr/include/arm-linux-gnueabihf -I/usr/include mainwindow.h -o moc_mainwindow.cpp
 
 moc_MotionSensorThread.cpp: MotionSensorThread.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/pi/Documents/check/moc_predefs.h -I/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++ -I/home/pi/Documents/check -I/usr/include/arm-linux-gnueabihf/qt5 -I/usr/include/arm-linux-gnueabihf/qt5/QtWidgets -I/usr/include/arm-linux-gnueabihf/qt5/QtGui -I/usr/include/arm-linux-gnueabihf/qt5/QtCore -I/usr/include/c++/8 -I/usr/include/arm-linux-gnueabihf/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/arm-linux-gnueabihf/8/include -I/usr/local/include -I/usr/lib/gcc/arm-linux-gnueabihf/8/include-fixed -I/usr/include/arm-linux-gnueabihf -I/usr/include MotionSensorThread.h -o moc_MotionSensorThread.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/pi/Documents/added-tst/moc_predefs.h -I/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++ -I/home/pi/Documents/added-tst -I/usr/include/arm-linux-gnueabihf/qt5 -I/usr/include/arm-linux-gnueabihf/qt5/QtWidgets -I/usr/include/arm-linux-gnueabihf/qt5/QtGui -I/usr/include/arm-linux-gnueabihf/qt5/QtCore -I/usr/include/c++/8 -I/usr/include/arm-linux-gnueabihf/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/arm-linux-gnueabihf/8/include -I/usr/local/include -I/usr/lib/gcc/arm-linux-gnueabihf/8/include-fixed -I/usr/include/arm-linux-gnueabihf -I/usr/include MotionSensorThread.h -o moc_MotionSensorThread.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -414,6 +424,8 @@ main.o: main.cpp mainwindow.h \
 		WeatherAPI.h \
 		CurlHelper.h \
 		SpotifyAPI.h \
+		TwitterAPI.h \
+		TimeAPI.h \
 		MotionSensorThread.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
@@ -424,6 +436,8 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		WeatherAPI.h \
 		CurlHelper.h \
 		SpotifyAPI.h \
+		TwitterAPI.h \
+		TimeAPI.h \
 		MotionSensorThread.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
 
@@ -432,14 +446,18 @@ Model.o: Model.cpp Model.h \
 		APIInterface.h \
 		WeatherAPI.h \
 		CurlHelper.h \
-		SpotifyAPI.h
+		SpotifyAPI.h \
+		TwitterAPI.h \
+		TimeAPI.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Model.o Model.cpp
 
 APIFactory.o: APIFactory.cpp APIFactory.h \
 		APIInterface.h \
 		WeatherAPI.h \
 		CurlHelper.h \
-		SpotifyAPI.h
+		SpotifyAPI.h \
+		TwitterAPI.h \
+		TimeAPI.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o APIFactory.o APIFactory.cpp
 
 CurlHelper.o: CurlHelper.cpp CurlHelper.h
@@ -454,6 +472,15 @@ WeatherAPI.o: WeatherAPI.cpp WeatherAPI.h \
 		APIInterface.h \
 		CurlHelper.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o WeatherAPI.o WeatherAPI.cpp
+
+TimeAPI.o: TimeAPI.cpp TimeAPI.h \
+		APIInterface.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o TimeAPI.o TimeAPI.cpp
+
+TwitterAPI.o: TwitterAPI.cpp TwitterAPI.h \
+		APIInterface.h \
+		CurlHelper.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o TwitterAPI.o TwitterAPI.cpp
 
 MotionSensorThread.o: MotionSensorThread.cpp MotionSensorThread.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o MotionSensorThread.o MotionSensorThread.cpp

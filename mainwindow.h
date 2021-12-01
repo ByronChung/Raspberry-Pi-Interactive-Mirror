@@ -18,11 +18,13 @@
 #include "CurlHelper.h"
 #include "SpotifyAPI.h"
 #include "WeatherAPI.h"
+#include "TwitterAPI.h"
+#include "TimeAPI.h"
 #include "MotionSensorThread.h"
 
-class mainwindow : public QMainWindow { //Inherit from QMainWindow class to display UI contents into window container
+class mainwindow : public QMainWindow { 
 	
-	Q_OBJECT //macro that alerts compiler to process additional QT functions needed for handling things such as signals, slots
+	Q_OBJECT 
 	
 	public:
 		/*!
@@ -32,7 +34,7 @@ class mainwindow : public QMainWindow { //Inherit from QMainWindow class to disp
 		 @return None
 		 @author Ashwin Singh, Ashvinder Suri
 		 */
-		explicit mainwindow(QWidget *parent=nullptr); //No parent exists for this window, therefore pass null pointer
+		explicit mainwindow(QWidget *parent=nullptr); 
 		/*!
  		 @brief Function to automate QT connection process for a particular button and its label
  		 Connect button to its label such that when the button is pressed, its label is sent as a string to the Model class to generate an API call & retrieve, show data for the UI
@@ -51,22 +53,18 @@ class mainwindow : public QMainWindow { //Inherit from QMainWindow class to disp
 		 @author Ashwin Singh
 		 */
 		void onSensorReading(std::string reading);
-  		/*!
-         @brief button, label , and Model Object Declarations for UI Display
-         @author Pablo Ortega, Byron Chung
-         */
 	private:
 		QPushButton *btn_1;
 		QPushButton *btn_2;
-  		QPushButton *btn_3;
-  		QPushButton *btn_4;
+		QPushButton *btn_3;
+		QPushButton *btn_4;
 		QLabel *text_1;
 		QLabel *text_2;
-  		QLabel *text_3;
-  		QLabel *text_4;
+		QLabel *text_3;
+		QLabel *text_4;
 		QLabel *sensor_text;
 		Model *m;
-
+		QLabel *title;
 		MotionSensorThread *sensor;
 };
 #endif

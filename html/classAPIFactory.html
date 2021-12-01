@@ -150,6 +150,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Return API object given a certain string Construct specific API object given string passed from button label; API object later used to perform HTTP requests to that API's server. </p>
+<dl class="section author"><dt>Author</dt><dd>Ashwin Singh </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">Pass</td><td>address of string specifying API object requested </td></tr>
@@ -167,8 +168,14 @@ Public Member Functions</h2></td></tr>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span>(api_id == <span class="stringliteral">&quot;spotify&quot;</span>) {</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        api_type = <span class="keyword">new</span> <a class="code" href="classSpotifyAPI.html">SpotifyAPI</a>();</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    }</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordflow">return</span> api_type;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;}   </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span>(api_id == <span class="stringliteral">&quot;twitter&quot;</span>) {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        api_type = <span class="keyword">new</span> <a class="code" href="classTwitterAPI.html">TwitterAPI</a>();</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    }</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span>(api_id == <span class="stringliteral">&quot;time&quot;</span>) {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        api_type = <span class="keyword">new</span> <a class="code" href="classTimeAPI.html">TimeAPI</a>();</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    }</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordflow">return</span> api_type;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}   </div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -178,6 +185,8 @@ Public Member Functions</h2></td></tr>
 </ul>
 </div><!-- contents -->
 <div class="ttc" id="aclassAPIInterface_html"><div class="ttname"><a href="classAPIInterface.html">APIInterface</a></div><div class="ttdoc">Interface to define general API object Different types of API objects implement interface (evident by...</div><div class="ttdef"><b>Definition:</b> APIInterface.h:12</div></div>
+<div class="ttc" id="aclassTimeAPI_html"><div class="ttname"><a href="classTimeAPI.html">TimeAPI</a></div><div class="ttdef"><b>Definition:</b> TimeAPI.h:18</div></div>
+<div class="ttc" id="aclassTwitterAPI_html"><div class="ttname"><a href="classTwitterAPI.html">TwitterAPI</a></div><div class="ttdoc">Class used to interface with Twitter API Class performs Twitter API authentication using a refresh to...</div><div class="ttdef"><b>Definition:</b> TwitterAPI.h:16</div></div>
 <div class="ttc" id="aclassSpotifyAPI_html"><div class="ttname"><a href="classSpotifyAPI.html">SpotifyAPI</a></div><div class="ttdoc">Class used to interface with Spotify API Class performs Spotify API authentication using a refresh to...</div><div class="ttdef"><b>Definition:</b> SpotifyAPI.h:15</div></div>
 <div class="ttc" id="aclassWeatherAPI_html"><div class="ttname"><a href="classWeatherAPI.html">WeatherAPI</a></div><div class="ttdoc">Class used to interface with Weather API Class performs API call to fetch recently weather data from ...</div><div class="ttdef"><b>Definition:</b> WeatherAPI.h:16</div></div>
 <!-- start footer part -->

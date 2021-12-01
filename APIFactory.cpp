@@ -14,6 +14,12 @@ APIInterface* APIFactory::getAPI(std::string& api_id) {
 	else if(api_id == "spotify") {
 		api_type = new SpotifyAPI();
 	}
+	else if(api_id == "twitter") {
+		api_type = new TwitterAPI();
+	}
+	else if(api_id == "time") {
+		api_type = new TimeAPI();
+	}
 	return api_type;
 }	
 

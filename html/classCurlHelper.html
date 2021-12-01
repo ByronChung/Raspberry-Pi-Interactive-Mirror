@@ -136,6 +136,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Constructor to perform cURL set up and make request Setup headers, parameters and HTTP request type, then cURL performs request &amp; stores raw data to the class member response. </p>
+<dl class="section author"><dt>Author</dt><dd>Ashwin Singh </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">struct</td><td>containing request headers, URL string, and request-type string </td></tr>
@@ -144,31 +145,34 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
 <div class="fragment"><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;                                                                                    {</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>* curl_url = url.c_str();</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>* curl_req_type = req_type.c_str();</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="comment">//cURL a C-based library, therefore convert C++ style strings to C-strings</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>* curl_url = url.c_str();</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>* curl_req_type = req_type.c_str();</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    CURL *curl = curl_easy_init();</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordflow">if</span>(curl) {</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        curl_easy_setopt(curl, CURLOPT_URL, curl_url);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordflow">if</span>(headers != NULL) {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        }</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        curl_easy_setopt(curl, CURLOPT_USERAGENT, <span class="stringliteral">&quot;curl/7.68.0&quot;</span>);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST, curl_req_type);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, <a class="code" href="classCurlHelper.html#acf6a643c1acd2350a6097ffe97b0fb67">writefunc</a>);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        curl_easy_setopt(curl, CURLOPT_WRITEDATA, &amp;<a class="code" href="classCurlHelper.html#af32df0b8e2db4f1f4ff74cfaf1775990">response</a>);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        curl_easy_perform(curl);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        curl_easy_cleanup(curl);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    }</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    CURL *curl = curl_easy_init();</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordflow">if</span>(curl) {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        curl_easy_setopt(curl, CURLOPT_URL, curl_url);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="comment">//Append headers if any passed</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordflow">if</span>(headers != NULL) {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        }</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="comment">//Modify user agent so server knows what type of device sends request</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        curl_easy_setopt(curl, CURLOPT_USERAGENT, <span class="stringliteral">&quot;curl/7.68.0&quot;</span>);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST, curl_req_type);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="comment">//Setup callback function to parse transferred data &amp; store to variable</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, <a class="code" href="classCurlHelper.html#acf6a643c1acd2350a6097ffe97b0fb67">writefunc</a>);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        curl_easy_setopt(curl, CURLOPT_WRITEDATA, &amp;<a class="code" href="classCurlHelper.html#af32df0b8e2db4f1f4ff74cfaf1775990">response</a>);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="comment">//Perform HTTP request, clean up &amp; exit</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        curl_easy_perform(curl);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        curl_easy_cleanup(curl);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    }</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -213,9 +217,9 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Address of response string </dd></dl>
-<div class="fragment"><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                                    {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classCurlHelper.html#af32df0b8e2db4f1f4ff74cfaf1775990">response</a>;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                                    {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classCurlHelper.html#af32df0b8e2db4f1f4ff74cfaf1775990">response</a>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -309,7 +313,7 @@ Private Attributes</h2></td></tr>
 </ul>
 </div><!-- contents -->
 <div class="ttc" id="aclassCurlHelper_html_acf6a643c1acd2350a6097ffe97b0fb67"><div class="ttname"><a href="classCurlHelper.html#acf6a643c1acd2350a6097ffe97b0fb67">CurlHelper::writefunc</a></div><div class="ttdeci">static size_t writefunc(void *ptr, size_t size, size_t nmemb, std::string *s)</div><div class="ttdoc">Callback function required to transfer response data into a variable cURL raw JSON response stored to...</div><div class="ttdef"><b>Definition:</b> CurlHelper.cpp:6</div></div>
-<div class="ttc" id="aclassCurlHelper_html_af32df0b8e2db4f1f4ff74cfaf1775990"><div class="ttname"><a href="classCurlHelper.html#af32df0b8e2db4f1f4ff74cfaf1775990">CurlHelper::response</a></div><div class="ttdeci">std::string response</div><div class="ttdef"><b>Definition:</b> CurlHelper.h:38</div></div>
+<div class="ttc" id="aclassCurlHelper_html_af32df0b8e2db4f1f4ff74cfaf1775990"><div class="ttname"><a href="classCurlHelper.html#af32df0b8e2db4f1f4ff74cfaf1775990">CurlHelper::response</a></div><div class="ttdeci">std::string response</div><div class="ttdef"><b>Definition:</b> CurlHelper.h:39</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

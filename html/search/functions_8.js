@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['update_591',['update',['../classModel.html#a974872d87c1d6e5886d5bc65fb8467f3',1,'Model']]]
+  ['twitterapi_627',['TwitterAPI',['../classTwitterAPI.html#a55a27da023006912afe4a119711a520d',1,'TwitterAPI']]]
 ];

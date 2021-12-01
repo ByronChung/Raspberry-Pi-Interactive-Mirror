@@ -11,6 +11,8 @@
 #include "APIInterface.h"
 #include "WeatherAPI.h"
 #include "SpotifyAPI.h"
+#include "TwitterAPI.h"
+#include "TimeAPI.h"
 #include "CurlHelper.h"
 
 class APIFactory {
@@ -21,6 +23,7 @@ class APIFactory {
 		/*!
  		 @brief Return API object given a certain string
  		 Construct specific API object given string passed from button label; API object later used to perform HTTP requests to that API's server
+		 @author Ashwin Singh
 		 @param Pass address of string specifying API object requested
 		 @return Constructed API object 
 		*/

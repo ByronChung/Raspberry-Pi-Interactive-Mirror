@@ -1,0 +1,243 @@
+\hypertarget{classTwitterAPI}{}\doxysection{Twitter\+A\+PI Class Reference}
+\label{classTwitterAPI}\index{TwitterAPI@{TwitterAPI}}
+
+
+Class used to interface with Twitter A\+PI Class performs Twitter A\+PI authentication using a refresh token \& then performs A\+PI call to fetch recent tweets from a dummy account.  
+
+
+
+
+{\ttfamily \#include $<$Twitter\+A\+P\+I.\+h$>$}
+
+
+
+Inheritance diagram for Twitter\+A\+PI\+:
+% FIG 0
+
+
+Collaboration diagram for Twitter\+A\+PI\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTwitterAPI_a55a27da023006912afe4a119711a520d}{Twitter\+A\+PI}} ()
+\begin{DoxyCompactList}\small\item\em Initialize data member auth\+\_\+request for later use with Twitter A\+PI authentication. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classTwitterAPI_abff2eaa4af8c388f792daf265c6e271c}{$\sim$\+Twitter\+A\+PI}} ()=default
+\item 
+void \mbox{\hyperlink{classTwitterAPI_a77c6c55dfda29a8a24c03a22a1663b42}{get\+Tweets}} ()
+\begin{DoxyCompactList}\small\item\em Using auth\+\_\+request trigger A\+PI call to retrieve recent Tweet Retrieve raw J\+S\+ON response of recent tweet from Twitter A\+PI using c\+U\+RL. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTwitterAPI_a3fe7c56ce6f407f1e2678b58d6b9f218}{parse\+Tweet}} ()
+\begin{DoxyCompactList}\small\item\em Parse response to retrieve recent Tweets Store parse resonse in appropriate holder variable. \end{DoxyCompactList}\item 
+std\+::string \& \mbox{\hyperlink{classTwitterAPI_ab7e9b767c0fc358440ea61f927560013}{call}} () override
+\begin{DoxyCompactList}\small\item\em Implemented function based on \mbox{\hyperlink{classAPIInterface}{A\+P\+I\+Interface}}; Perform authentication, retrieve tweet and store Use auth\+\_\+request with c\+U\+RL H\+T\+TP request to the Twitter access U\+RL, then call other functions to retrieve twitter data \& store. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$ \mbox{\hyperlink{classTwitterAPI_a4990d0f4f7d78ddb6a611c6bd14b5cd1}{auth\+\_\+request}}
+\item 
+std\+::string \mbox{\hyperlink{classTwitterAPI_ab4b3d242a1e80d800c763dfb1dad3fae}{twitter\+\_\+response}}
+\item 
+std\+::string \mbox{\hyperlink{classTwitterAPI_a5eece33e21ce08358bede910e677083d}{recent\+Tweets}}
+\item 
+std\+::string \mbox{\hyperlink{classTwitterAPI_a58eadac6b035f6c93444b6f2efcbe7e7}{name}}
+\item 
+std\+::string \mbox{\hyperlink{classTwitterAPI_aba32b8a08240b0caa4e47b7aeb3e39de}{description}}
+\item 
+\mbox{\hyperlink{classCurlHelper}{Curl\+Helper}} $\ast$ \mbox{\hyperlink{classTwitterAPI_a6fb2ecac296c69f23f509e10d52d6459}{curl\+\_\+response\+\_\+make}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class used to interface with Twitter A\+PI Class performs Twitter A\+PI authentication using a refresh token \& then performs A\+PI call to fetch recent tweets from a dummy account. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classTwitterAPI_a55a27da023006912afe4a119711a520d}\label{classTwitterAPI_a55a27da023006912afe4a119711a520d}} 
+\index{TwitterAPI@{TwitterAPI}!TwitterAPI@{TwitterAPI}}
+\index{TwitterAPI@{TwitterAPI}!TwitterAPI@{TwitterAPI}}
+\doxysubsubsection{\texorpdfstring{TwitterAPI()}{TwitterAPI()}}
+{\footnotesize\ttfamily Twitter\+A\+P\+I\+::\+Twitter\+A\+PI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initialize data member auth\+\_\+request for later use with Twitter A\+PI authentication. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Byron Chung, Pablo Ortega, Ashvinder Suri 
+\end{DoxyAuthor}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{6                           \{}
+\DoxyCodeLine{7     \mbox{\hyperlink{classTwitterAPI_a4990d0f4f7d78ddb6a611c6bd14b5cd1}{auth\_request}} = \textcolor{stringliteral}{"Authorization: Bearer AAAAAAAAAAAAAAAAAAAAADQDWQEAAAAAlXOh32lmggqTqEcJnMcUfhx9lB8\%3DTdJu6nlmZY5HalE4AfTZ3TMKMtGQ1NPQc46WaZ25hlm0FK6QJE"};}
+\DoxyCodeLine{8 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classTwitterAPI_abff2eaa4af8c388f792daf265c6e271c}\label{classTwitterAPI_abff2eaa4af8c388f792daf265c6e271c}} 
+\index{TwitterAPI@{TwitterAPI}!````~TwitterAPI@{$\sim$TwitterAPI}}
+\index{````~TwitterAPI@{$\sim$TwitterAPI}!TwitterAPI@{TwitterAPI}}
+\doxysubsubsection{\texorpdfstring{$\sim$TwitterAPI()}{~TwitterAPI()}}
+{\footnotesize\ttfamily Twitter\+A\+P\+I\+::$\sim$\+Twitter\+A\+PI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classTwitterAPI_ab7e9b767c0fc358440ea61f927560013}\label{classTwitterAPI_ab7e9b767c0fc358440ea61f927560013}} 
+\index{TwitterAPI@{TwitterAPI}!call@{call}}
+\index{call@{call}!TwitterAPI@{TwitterAPI}}
+\doxysubsubsection{\texorpdfstring{call()}{call()}}
+{\footnotesize\ttfamily std\+::string \& Twitter\+A\+P\+I\+::call (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implemented function based on \mbox{\hyperlink{classAPIInterface}{A\+P\+I\+Interface}}; Perform authentication, retrieve tweet and store Use auth\+\_\+request with c\+U\+RL H\+T\+TP request to the Twitter access U\+RL, then call other functions to retrieve twitter data \& store. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Byron Chung, Pablo Ortega, Ashvinder Suri 
+\end{DoxyAuthor}
+
+
+Implements \mbox{\hyperlink{classAPIInterface_acfbf0916484ebab8ff7475c4d8a49833}{A\+P\+I\+Interface}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{37                             \{}
+\DoxyCodeLine{38     \mbox{\hyperlink{classTwitterAPI_a77c6c55dfda29a8a24c03a22a1663b42}{getTweets}}();}
+\DoxyCodeLine{39     \mbox{\hyperlink{classTwitterAPI_a3fe7c56ce6f407f1e2678b58d6b9f218}{parseTweet}}();}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41     \textcolor{keywordflow}{return} \mbox{\hyperlink{classTwitterAPI_a58eadac6b035f6c93444b6f2efcbe7e7}{name}};}
+\DoxyCodeLine{42 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classTwitterAPI_a77c6c55dfda29a8a24c03a22a1663b42}\label{classTwitterAPI_a77c6c55dfda29a8a24c03a22a1663b42}} 
+\index{TwitterAPI@{TwitterAPI}!getTweets@{getTweets}}
+\index{getTweets@{getTweets}!TwitterAPI@{TwitterAPI}}
+\doxysubsubsection{\texorpdfstring{getTweets()}{getTweets()}}
+{\footnotesize\ttfamily void Twitter\+A\+P\+I\+::get\+Tweets (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Using auth\+\_\+request trigger A\+PI call to retrieve recent Tweet Retrieve raw J\+S\+ON response of recent tweet from Twitter A\+PI using c\+U\+RL. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Byron Chung, Pablo Ortega, Ashvinder Suri 
+\end{DoxyAuthor}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{11                            \{}
+\DoxyCodeLine{12     \textcolor{keyword}{struct }curl\_slist *headers;}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14     headers = NULL;}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16     headers = curl\_slist\_append(headers, \mbox{\hyperlink{classTwitterAPI_a4990d0f4f7d78ddb6a611c6bd14b5cd1}{auth\_request}});}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18     \mbox{\hyperlink{classTwitterAPI_a6fb2ecac296c69f23f509e10d52d6459}{curl\_response\_make}} = \textcolor{keyword}{new} \mbox{\hyperlink{classCurlHelper}{CurlHelper}}(headers, \textcolor{stringliteral}{"https://api.twitter.com/2/users/by?usernames=jack\&user.fields=created\_at\&expansions=pinned\_tweet\_id\&tweet.fields=author\_id,created\_at"}, \textcolor{stringliteral}{"GET"});}
+\DoxyCodeLine{19     \mbox{\hyperlink{classTwitterAPI_ab4b3d242a1e80d800c763dfb1dad3fae}{twitter\_response}} = \mbox{\hyperlink{classTwitterAPI_a6fb2ecac296c69f23f509e10d52d6459}{curl\_response\_make}}-\/>\mbox{\hyperlink{classCurlHelper_a9429fc67cd5b674d10c7b76c0d5eb26e}{get\_response}}();}
+\DoxyCodeLine{20 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classTwitterAPI_a3fe7c56ce6f407f1e2678b58d6b9f218}\label{classTwitterAPI_a3fe7c56ce6f407f1e2678b58d6b9f218}} 
+\index{TwitterAPI@{TwitterAPI}!parseTweet@{parseTweet}}
+\index{parseTweet@{parseTweet}!TwitterAPI@{TwitterAPI}}
+\doxysubsubsection{\texorpdfstring{parseTweet()}{parseTweet()}}
+{\footnotesize\ttfamily void Twitter\+A\+P\+I\+::parse\+Tweet (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Parse response to retrieve recent Tweets Store parse resonse in appropriate holder variable. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Byron Chung, Pablo Ortega, Ashvinder Suri 
+\end{DoxyAuthor}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{23                             \{}
+\DoxyCodeLine{24     Json::Reader reader;}
+\DoxyCodeLine{25     Json::Value obj;}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27     reader.parse(\mbox{\hyperlink{classTwitterAPI_ab4b3d242a1e80d800c763dfb1dad3fae}{twitter\_response}}, obj);}
+\DoxyCodeLine{28     \textcolor{keywordflow}{for}(Json::Value::ArrayIndex i = 0; i != obj[\textcolor{stringliteral}{"data"}].size(); i++)\{}
+\DoxyCodeLine{29         \mbox{\hyperlink{classTwitterAPI_a58eadac6b035f6c93444b6f2efcbe7e7}{name}} +=  obj[\textcolor{stringliteral}{"data"}][i][\textcolor{stringliteral}{"name"}].asString();}
+\DoxyCodeLine{30         \mbox{\hyperlink{classTwitterAPI_aba32b8a08240b0caa4e47b7aeb3e39de}{description}} += obj[\textcolor{stringliteral}{"includes"}][\textcolor{stringliteral}{"tweets"}][i][\textcolor{stringliteral}{"text"}].asString();}
+\DoxyCodeLine{31     \}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33         \mbox{\hyperlink{classTwitterAPI_a58eadac6b035f6c93444b6f2efcbe7e7}{name}} = \textcolor{stringliteral}{"Username:  "}  + \mbox{\hyperlink{classTwitterAPI_a58eadac6b035f6c93444b6f2efcbe7e7}{name}} + \textcolor{stringliteral}{" Tweets: "} + \mbox{\hyperlink{classTwitterAPI_aba32b8a08240b0caa4e47b7aeb3e39de}{description}};}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classTwitterAPI_a4990d0f4f7d78ddb6a611c6bd14b5cd1}\label{classTwitterAPI_a4990d0f4f7d78ddb6a611c6bd14b5cd1}} 
+\index{TwitterAPI@{TwitterAPI}!auth\_request@{auth\_request}}
+\index{auth\_request@{auth\_request}!TwitterAPI@{TwitterAPI}}
+\doxysubsubsection{\texorpdfstring{auth\_request}{auth\_request}}
+{\footnotesize\ttfamily const char$\ast$ Twitter\+A\+P\+I\+::auth\+\_\+request\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classTwitterAPI_a6fb2ecac296c69f23f509e10d52d6459}\label{classTwitterAPI_a6fb2ecac296c69f23f509e10d52d6459}} 
+\index{TwitterAPI@{TwitterAPI}!curl\_response\_make@{curl\_response\_make}}
+\index{curl\_response\_make@{curl\_response\_make}!TwitterAPI@{TwitterAPI}}
+\doxysubsubsection{\texorpdfstring{curl\_response\_make}{curl\_response\_make}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classCurlHelper}{Curl\+Helper}}$\ast$ Twitter\+A\+P\+I\+::curl\+\_\+response\+\_\+make\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classTwitterAPI_aba32b8a08240b0caa4e47b7aeb3e39de}\label{classTwitterAPI_aba32b8a08240b0caa4e47b7aeb3e39de}} 
+\index{TwitterAPI@{TwitterAPI}!description@{description}}
+\index{description@{description}!TwitterAPI@{TwitterAPI}}
+\doxysubsubsection{\texorpdfstring{description}{description}}
+{\footnotesize\ttfamily std\+::string Twitter\+A\+P\+I\+::description\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classTwitterAPI_a58eadac6b035f6c93444b6f2efcbe7e7}\label{classTwitterAPI_a58eadac6b035f6c93444b6f2efcbe7e7}} 
+\index{TwitterAPI@{TwitterAPI}!name@{name}}
+\index{name@{name}!TwitterAPI@{TwitterAPI}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily std\+::string Twitter\+A\+P\+I\+::name\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classTwitterAPI_a5eece33e21ce08358bede910e677083d}\label{classTwitterAPI_a5eece33e21ce08358bede910e677083d}} 
+\index{TwitterAPI@{TwitterAPI}!recentTweets@{recentTweets}}
+\index{recentTweets@{recentTweets}!TwitterAPI@{TwitterAPI}}
+\doxysubsubsection{\texorpdfstring{recentTweets}{recentTweets}}
+{\footnotesize\ttfamily std\+::string Twitter\+A\+P\+I\+::recent\+Tweets\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classTwitterAPI_ab4b3d242a1e80d800c763dfb1dad3fae}\label{classTwitterAPI_ab4b3d242a1e80d800c763dfb1dad3fae}} 
+\index{TwitterAPI@{TwitterAPI}!twitter\_response@{twitter\_response}}
+\index{twitter\_response@{twitter\_response}!TwitterAPI@{TwitterAPI}}
+\doxysubsubsection{\texorpdfstring{twitter\_response}{twitter\_response}}
+{\footnotesize\ttfamily std\+::string Twitter\+A\+P\+I\+::twitter\+\_\+response\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{TwitterAPI_8h}{Twitter\+A\+P\+I.\+h}}\item 
+\mbox{\hyperlink{TwitterAPI_8cpp}{Twitter\+A\+P\+I.\+cpp}}\end{DoxyCompactItemize}

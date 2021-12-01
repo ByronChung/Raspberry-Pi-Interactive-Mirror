@@ -7,5 +7,6 @@ var searchData=
   ['apifactory_2ecpp_469',['APIFactory.cpp',['../APIFactory_8cpp.html',1,'']]],
   ['apifactory_2eh_470',['APIFactory.h',['../APIFactory_8h.html',1,'']]],
   ['apiinterface_471',['APIInterface',['../classAPIInterface.html',1,'']]],
-  ['apiinterface_2eh_472',['APIInterface.h',['../APIInterface_8h.html',1,'']]]
+  ['apiinterface_2eh_472',['APIInterface.h',['../APIInterface_8h.html',1,'']]],
+  ['auth_5frequest_473',['auth_request',['../classTwitterAPI.html#a4990d0f4f7d78ddb6a611c6bd14b5cd1',1,'TwitterAPI']]]
 ];

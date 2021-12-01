@@ -154,10 +154,10 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Ashwin Singh </dd></dl>
-<div class="fragment"><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;                          {</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <a class="code" href="classSpotifyAPI.html#ab977f7655481148ec4852a53dac944a2">base_64_encoding_auth_request</a> = <span class="stringliteral">&quot;Authorization: Basic ODNjYjhjZmI5YTNkNGNkYmJiZDdlZmRmNTdmNzFkNWI6OTQ0ZjEwMDg1YWNmNDg0Mzk3ZDkwN2IzNTg0YTc3MWE=&quot;</span>;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <a class="code" href="classSpotifyAPI.html#a01581d1d9ec52159289057f787149c6b">refresh_request</a> = <span class="stringliteral">&quot;https://accounts.spotify.com/api/token?grant_type=refresh_token&amp;refresh_token=AQAdqYuGHig8gIwc9rf7ED4KZcPexZWeq3cRBxIUUaS7G3SsC8e7TG9oGEhGtE6PmknM2Pe_L09SQcXnnVudl80QoGhG4A5MsI_mn-hJos2ibLOPt59BWDVKnCRin9MDOv4&quot;</span>;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;                          {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <a class="code" href="classSpotifyAPI.html#ab977f7655481148ec4852a53dac944a2">base_64_encoding_auth_request</a> = <span class="stringliteral">&quot;Authorization: Basic ODNjYjhjZmI5YTNkNGNkYmJiZDdlZmRmNTdmNzFkNWI6OTQ0ZjEwMDg1YWNmNDg0Mzk3ZDkwN2IzNTg0YTc3MWE=&quot;</span>;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <a class="code" href="classSpotifyAPI.html#a01581d1d9ec52159289057f787149c6b">refresh_request</a> = <span class="stringliteral">&quot;https://accounts.spotify.com/api/token?grant_type=refresh_token&amp;refresh_token=AQAdqYuGHig8gIwc9rf7ED4KZcPexZWeq3cRBxIUUaS7G3SsC8e7TG9oGEhGtE6PmknM2Pe_L09SQcXnnVudl80QoGhG4A5MsI_mn-hJos2ibLOPt59BWDVKnCRin9MDOv4&quot;</span>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -221,22 +221,24 @@ Private Attributes</h2></td></tr>
 <dl class="section author"><dt>Author</dt><dd>Ashwin Singh </dd></dl>
 
 <p>Implements <a class="el" href="classAPIInterface.html#acfbf0916484ebab8ff7475c4d8a49833">APIInterface</a>.</p>
-<div class="fragment"><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                            {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keyword">struct </span>curl_slist *headers;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    headers = NULL;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    headers = curl_slist_append(headers, <span class="stringliteral">&quot;Content-Type: application/x-www-form-urlencoded&quot;</span>);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    headers = curl_slist_append(headers, <a class="code" href="classSpotifyAPI.html#ab977f7655481148ec4852a53dac944a2">base_64_encoding_auth_request</a>);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <a class="code" href="classSpotifyAPI.html#a7d8befbcbeae9ec6e166ce7e1589f8d7">curl_token_make</a> = <span class="keyword">new</span> <a class="code" href="classCurlHelper.html">CurlHelper</a>(headers, <a class="code" href="classSpotifyAPI.html#a01581d1d9ec52159289057f787149c6b">refresh_request</a>, <span class="stringliteral">&quot;POST&quot;</span>);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <a class="code" href="classSpotifyAPI.html#a6332aa85a7bcc1e380b9eeab4fe4f56b">spotify_auth_response</a> = <a class="code" href="classSpotifyAPI.html#a7d8befbcbeae9ec6e166ce7e1589f8d7">curl_token_make</a>-&gt;<a class="code" href="classCurlHelper.html#a9429fc67cd5b674d10c7b76c0d5eb26e">get_response</a>();</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="classSpotifyAPI.html#a40e30a70f52e595680f6c16133567ca0">parseAccessToken</a>(<a class="code" href="classSpotifyAPI.html#a6332aa85a7bcc1e380b9eeab4fe4f56b">spotify_auth_response</a>);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <a class="code" href="classSpotifyAPI.html#a8ff3f8e1289c38a420ba7a3a58b5793e">getRecentlyPlayedTracks</a>();</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <a class="code" href="classSpotifyAPI.html#a015768af234256f2d85f85690b179463">parseRecentTracks</a>();</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classSpotifyAPI.html#a8bd6390758a75ddccd5e44efdc81ac55">recentSongs</a>;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                            {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="comment">//Access token expires every hour, therefore must authenticate on each API call to access song data</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keyword">struct </span>curl_slist *headers;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    headers = NULL;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    headers = curl_slist_append(headers, <span class="stringliteral">&quot;Content-Type: application/x-www-form-urlencoded&quot;</span>);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    headers = curl_slist_append(headers, <a class="code" href="classSpotifyAPI.html#ab977f7655481148ec4852a53dac944a2">base_64_encoding_auth_request</a>);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <a class="code" href="classSpotifyAPI.html#a7d8befbcbeae9ec6e166ce7e1589f8d7">curl_token_make</a> = <span class="keyword">new</span> <a class="code" href="classCurlHelper.html">CurlHelper</a>(headers, <a class="code" href="classSpotifyAPI.html#a01581d1d9ec52159289057f787149c6b">refresh_request</a>, <span class="stringliteral">&quot;POST&quot;</span>);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <a class="code" href="classSpotifyAPI.html#a6332aa85a7bcc1e380b9eeab4fe4f56b">spotify_auth_response</a> = <a class="code" href="classSpotifyAPI.html#a7d8befbcbeae9ec6e166ce7e1589f8d7">curl_token_make</a>-&gt;<a class="code" href="classCurlHelper.html#a9429fc67cd5b674d10c7b76c0d5eb26e">get_response</a>();</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <a class="code" href="classSpotifyAPI.html#a40e30a70f52e595680f6c16133567ca0">parseAccessToken</a>(<a class="code" href="classSpotifyAPI.html#a6332aa85a7bcc1e380b9eeab4fe4f56b">spotify_auth_response</a>);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <a class="code" href="classSpotifyAPI.html#a8ff3f8e1289c38a420ba7a3a58b5793e">getRecentlyPlayedTracks</a>();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <a class="code" href="classSpotifyAPI.html#a015768af234256f2d85f85690b179463">parseRecentTracks</a>();</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classSpotifyAPI.html#a8bd6390758a75ddccd5e44efdc81ac55">recentSongs</a>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -264,21 +266,21 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Ashwin Singh </dd></dl>
-<div class="fragment"><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                                         {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">struct </span>curl_slist *headers;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    headers = NULL;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    headers = curl_slist_append(headers, <span class="stringliteral">&quot;Accept: application/json&quot;</span>);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    headers = curl_slist_append(headers, <span class="stringliteral">&quot;Content-Type: application/json&quot;</span>);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    std::string auth = <span class="stringliteral">&quot;Authorization: Bearer &quot;</span>;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    auth.append(<a class="code" href="classSpotifyAPI.html#ae9b06266b297641418b834112eea24e6">access_token</a>);</div>
+<div class="fragment"><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                                         {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">struct </span>curl_slist *headers;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    headers = NULL;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    headers = curl_slist_append(headers, <span class="stringliteral">&quot;Accept: application/json&quot;</span>);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    headers = curl_slist_append(headers, <span class="stringliteral">&quot;Content-Type: application/json&quot;</span>);</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    headers = curl_slist_append(headers, auth.c_str());</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="classSpotifyAPI.html#a8e4da61fecf40a5677c275b10d771161">curl_response_make</a> = <span class="keyword">new</span> <a class="code" href="classCurlHelper.html">CurlHelper</a>(headers, <span class="stringliteral">&quot;https://api.spotify.com/v1/me/player/recently-played?limit=5&quot;</span>, <span class="stringliteral">&quot;GET&quot;</span>);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="classSpotifyAPI.html#a4202bafa3fa12a99943ede3aa790ce1a">spotify_songs_response</a> = <a class="code" href="classSpotifyAPI.html#a8e4da61fecf40a5677c275b10d771161">curl_response_make</a>-&gt;<a class="code" href="classCurlHelper.html#a9429fc67cd5b674d10c7b76c0d5eb26e">get_response</a>();</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    std::string auth = <span class="stringliteral">&quot;Authorization: Bearer &quot;</span>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    auth.append(<a class="code" href="classSpotifyAPI.html#ae9b06266b297641418b834112eea24e6">access_token</a>);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    headers = curl_slist_append(headers, auth.c_str());</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="classSpotifyAPI.html#a8e4da61fecf40a5677c275b10d771161">curl_response_make</a> = <span class="keyword">new</span> <a class="code" href="classCurlHelper.html">CurlHelper</a>(headers, <span class="stringliteral">&quot;https://api.spotify.com/v1/me/player/recently-played?limit=5&quot;</span>, <span class="stringliteral">&quot;GET&quot;</span>);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="classSpotifyAPI.html#a4202bafa3fa12a99943ede3aa790ce1a">spotify_songs_response</a> = <a class="code" href="classSpotifyAPI.html#a8e4da61fecf40a5677c275b10d771161">curl_response_make</a>-&gt;<a class="code" href="classCurlHelper.html#a9429fc67cd5b674d10c7b76c0d5eb26e">get_response</a>();</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -307,13 +309,13 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Ashwin Singh </dd></dl>
-<div class="fragment"><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;                                              { </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    Json::Reader reader;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    Json::Value obj;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    reader.parse(s, obj);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="classSpotifyAPI.html#ae9b06266b297641418b834112eea24e6">access_token</a> = obj[<span class="stringliteral">&quot;access_token&quot;</span>].asString();</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;                                              { </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    Json::Reader reader;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    Json::Value obj;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    reader.parse(s, obj);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="classSpotifyAPI.html#ae9b06266b297641418b834112eea24e6">access_token</a> = obj[<span class="stringliteral">&quot;access_token&quot;</span>].asString();</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -341,17 +343,18 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>None </dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Ashwin Singh </dd></dl>
-<div class="fragment"><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                                   {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    Json::Reader reader;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    Json::Value obj;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    reader.parse(<a class="code" href="classSpotifyAPI.html#a4202bafa3fa12a99943ede3aa790ce1a">spotify_songs_response</a>, obj);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="classSpotifyAPI.html#a8bd6390758a75ddccd5e44efdc81ac55">recentSongs</a> = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="fragment"><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                                   {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    Json::Reader reader;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    Json::Value obj;</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">for</span>(Json::Value::ArrayIndex i = 0; i != obj[<span class="stringliteral">&quot;items&quot;</span>].size(); i++) {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <a class="code" href="classSpotifyAPI.html#a8bd6390758a75ddccd5e44efdc81ac55">recentSongs</a> +=  <span class="stringliteral">&quot;Song: &quot;</span> + obj[<span class="stringliteral">&quot;items&quot;</span>][i][<span class="stringliteral">&quot;track&quot;</span>][<span class="stringliteral">&quot;name&quot;</span>].asString();</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    reader.parse(<a class="code" href="classSpotifyAPI.html#a4202bafa3fa12a99943ede3aa790ce1a">spotify_songs_response</a>, obj);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="classSpotifyAPI.html#a8bd6390758a75ddccd5e44efdc81ac55">recentSongs</a> = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="comment">//Nested JSON structure inside of items section, iterate through it to fetch tracks</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">for</span>(Json::Value::ArrayIndex i = 0; i != obj[<span class="stringliteral">&quot;items&quot;</span>].size(); i++) {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <a class="code" href="classSpotifyAPI.html#a8bd6390758a75ddccd5e44efdc81ac55">recentSongs</a> +=  <span class="stringliteral">&quot;Song: &quot;</span> + obj[<span class="stringliteral">&quot;items&quot;</span>][i][<span class="stringliteral">&quot;track&quot;</span>][<span class="stringliteral">&quot;name&quot;</span>].asString() + <span class="stringliteral">&quot;, &quot;</span>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -537,14 +540,14 @@ Private Attributes</h2></td></tr>
 <li><a class="el" href="SpotifyAPI_8cpp.html">SpotifyAPI.cpp</a></li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclassCurlHelper_html_a9429fc67cd5b674d10c7b76c0d5eb26e"><div class="ttname"><a href="classCurlHelper.html#a9429fc67cd5b674d10c7b76c0d5eb26e">CurlHelper::get_response</a></div><div class="ttdeci">std::string &amp; get_response()</div><div class="ttdoc">Getter to return raw JSON response Return raw JSON response stored to class member response-string.</div><div class="ttdef"><b>Definition:</b> CurlHelper.cpp:40</div></div>
+<div class="ttc" id="aclassCurlHelper_html_a9429fc67cd5b674d10c7b76c0d5eb26e"><div class="ttname"><a href="classCurlHelper.html#a9429fc67cd5b674d10c7b76c0d5eb26e">CurlHelper::get_response</a></div><div class="ttdeci">std::string &amp; get_response()</div><div class="ttdoc">Getter to return raw JSON response Return raw JSON response stored to class member response-string.</div><div class="ttdef"><b>Definition:</b> CurlHelper.cpp:43</div></div>
 <div class="ttc" id="aclassSpotifyAPI_html_ab977f7655481148ec4852a53dac944a2"><div class="ttname"><a href="classSpotifyAPI.html#ab977f7655481148ec4852a53dac944a2">SpotifyAPI::base_64_encoding_auth_request</a></div><div class="ttdeci">const char * base_64_encoding_auth_request</div><div class="ttdef"><b>Definition:</b> SpotifyAPI.h:61</div></div>
-<div class="ttc" id="aclassSpotifyAPI_html_a015768af234256f2d85f85690b179463"><div class="ttname"><a href="classSpotifyAPI.html#a015768af234256f2d85f85690b179463">SpotifyAPI::parseRecentTracks</a></div><div class="ttdeci">void parseRecentTracks()</div><div class="ttdoc">Parse response to retrieve recently played tracks Parse raw JSON response from Spotify API using dict...</div><div class="ttdef"><b>Definition:</b> SpotifyAPI.cpp:39</div></div>
+<div class="ttc" id="aclassSpotifyAPI_html_a015768af234256f2d85f85690b179463"><div class="ttname"><a href="classSpotifyAPI.html#a015768af234256f2d85f85690b179463">SpotifyAPI::parseRecentTracks</a></div><div class="ttdeci">void parseRecentTracks()</div><div class="ttdoc">Parse response to retrieve recently played tracks Parse raw JSON response from Spotify API using dict...</div><div class="ttdef"><b>Definition:</b> SpotifyAPI.cpp:42</div></div>
 <div class="ttc" id="aclassSpotifyAPI_html_a4202bafa3fa12a99943ede3aa790ce1a"><div class="ttname"><a href="classSpotifyAPI.html#a4202bafa3fa12a99943ede3aa790ce1a">SpotifyAPI::spotify_songs_response</a></div><div class="ttdeci">std::string spotify_songs_response</div><div class="ttdef"><b>Definition:</b> SpotifyAPI.h:60</div></div>
 <div class="ttc" id="aclassSpotifyAPI_html_a01581d1d9ec52159289057f787149c6b"><div class="ttname"><a href="classSpotifyAPI.html#a01581d1d9ec52159289057f787149c6b">SpotifyAPI::refresh_request</a></div><div class="ttdeci">const char * refresh_request</div><div class="ttdef"><b>Definition:</b> SpotifyAPI.h:62</div></div>
 <div class="ttc" id="aclassSpotifyAPI_html_a8bd6390758a75ddccd5e44efdc81ac55"><div class="ttname"><a href="classSpotifyAPI.html#a8bd6390758a75ddccd5e44efdc81ac55">SpotifyAPI::recentSongs</a></div><div class="ttdeci">std::string recentSongs</div><div class="ttdef"><b>Definition:</b> SpotifyAPI.h:64</div></div>
-<div class="ttc" id="aclassSpotifyAPI_html_a40e30a70f52e595680f6c16133567ca0"><div class="ttname"><a href="classSpotifyAPI.html#a40e30a70f52e595680f6c16133567ca0">SpotifyAPI::parseAccessToken</a></div><div class="ttdeci">void parseAccessToken(std::string &amp;s)</div><div class="ttdoc">Parse response from authentication request to retrieve access token Convert JSON response into a dict...</div><div class="ttdef"><b>Definition:</b> SpotifyAPI.cpp:13</div></div>
-<div class="ttc" id="aclassSpotifyAPI_html_a8ff3f8e1289c38a420ba7a3a58b5793e"><div class="ttname"><a href="classSpotifyAPI.html#a8ff3f8e1289c38a420ba7a3a58b5793e">SpotifyAPI::getRecentlyPlayedTracks</a></div><div class="ttdeci">void getRecentlyPlayedTracks()</div><div class="ttdoc">Using access token, trigger API call to retrieve recently played tracks Retrieve raw JSON response of...</div><div class="ttdef"><b>Definition:</b> SpotifyAPI.cpp:22</div></div>
+<div class="ttc" id="aclassSpotifyAPI_html_a40e30a70f52e595680f6c16133567ca0"><div class="ttname"><a href="classSpotifyAPI.html#a40e30a70f52e595680f6c16133567ca0">SpotifyAPI::parseAccessToken</a></div><div class="ttdeci">void parseAccessToken(std::string &amp;s)</div><div class="ttdoc">Parse response from authentication request to retrieve access token Convert JSON response into a dict...</div><div class="ttdef"><b>Definition:</b> SpotifyAPI.cpp:16</div></div>
+<div class="ttc" id="aclassSpotifyAPI_html_a8ff3f8e1289c38a420ba7a3a58b5793e"><div class="ttname"><a href="classSpotifyAPI.html#a8ff3f8e1289c38a420ba7a3a58b5793e">SpotifyAPI::getRecentlyPlayedTracks</a></div><div class="ttdeci">void getRecentlyPlayedTracks()</div><div class="ttdoc">Using access token, trigger API call to retrieve recently played tracks Retrieve raw JSON response of...</div><div class="ttdef"><b>Definition:</b> SpotifyAPI.cpp:25</div></div>
 <div class="ttc" id="aclassSpotifyAPI_html_ae9b06266b297641418b834112eea24e6"><div class="ttname"><a href="classSpotifyAPI.html#ae9b06266b297641418b834112eea24e6">SpotifyAPI::access_token</a></div><div class="ttdeci">std::string access_token</div><div class="ttdef"><b>Definition:</b> SpotifyAPI.h:63</div></div>
 <div class="ttc" id="aclassCurlHelper_html"><div class="ttname"><a href="classCurlHelper.html">CurlHelper</a></div><div class="ttdoc">Helper class to set up and perform HTTP request using cURL Helper class handles header,...</div><div class="ttdef"><b>Definition:</b> CurlHelper.h:13</div></div>
 <div class="ttc" id="aclassSpotifyAPI_html_a8e4da61fecf40a5677c275b10d771161"><div class="ttname"><a href="classSpotifyAPI.html#a8e4da61fecf40a5677c275b10d771161">SpotifyAPI::curl_response_make</a></div><div class="ttdeci">CurlHelper * curl_response_make</div><div class="ttdef"><b>Definition:</b> SpotifyAPI.h:66</div></div>

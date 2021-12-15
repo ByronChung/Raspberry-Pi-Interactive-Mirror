@@ -23,7 +23,6 @@ class TimeAPI: public APIInterface
 		Function calls C library local-time function
 		@param None
 		@return formatted current time
-		@author Byron Chung, Pablo Ortega, Ashvinder Suri, Saad Ali
 		*/
 		std::string& call() override;
 	private:

@@ -25,7 +25,6 @@ class MotionSensorThread : public QThread {
  		 Required to be named run in order for QThread to trigger function when called; function forms connection to Arduino, polls sensor data & emits data to UI
 		 @param None
 		 @return None
-		 @author Ashwin Singh
 		 */
 		virtual void run(void);
 	signals:
@@ -34,7 +33,6 @@ class MotionSensorThread : public QThread {
  		 Emitted signal called every 5 seconds; eventually received by UI thread (mainwindow) & processed there for display
 		 @param String containing whether motion detected or not
 		 @return None
-		 @author Ashwin Singh
 		 */
 		void sendReading(std::string reading);
 	public slots:

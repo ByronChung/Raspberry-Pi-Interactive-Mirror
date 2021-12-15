@@ -1,5 +1,4 @@
 /*
-Author: Ashwin Singh
 Description: Main program to run user interface
 Date October 5, 2021
 */

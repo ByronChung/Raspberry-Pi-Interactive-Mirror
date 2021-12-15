@@ -1,7 +1,6 @@
 /*!
  @brief Helper class to set up and perform HTTP request using cURL
  Helper class handles header, parameter, HTTP request type (e.g. POST, GET) set-up and returns raw JSON response using cURL library
- @author Ashwin Singh 
  */
  
 #ifndef CURL_HELPER_H
@@ -15,7 +14,6 @@ class CurlHelper {
 		/*!
  		 @brief Constructor to perform cURL set up and make request
  		 Setup headers, parameters and HTTP request type, then cURL performs request & stores raw data to the class member response
-		 @author Ashwin Singh
 		 @param struct containing request headers, URL string, and request-type string
 		 @return None
 		*/

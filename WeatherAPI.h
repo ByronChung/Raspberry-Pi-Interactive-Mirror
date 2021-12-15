@@ -22,7 +22,6 @@ class WeatherAPI: public APIInterface {
  		 Convert JSON response into a dictionary, parse response, retrieve weather data & store
 		 @param Raw JSON weather data response string
 		 @return None
-		 @author Ashwin Singh
 		 */
 		void parseString(std::string& response);
 		/*!
@@ -30,7 +29,6 @@ class WeatherAPI: public APIInterface {
  		 Using cURL, perform HTTP request to weather data server using API-key for access, then parse the raw JSON response in parseString() member function & return resultant string
 		 @param None
 		 @return Formatted string of weather statistics 
-		 @author Ashwin Singh
 		 */
 		std::string& call() override;
 	private:

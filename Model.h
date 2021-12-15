@@ -19,7 +19,6 @@ class Model {
  		 Formulate API object depending on string passed from UI upon button click, then perform HTTP request and store response to data member api_out
 		 @param Address of string passed from UI
 		 @return None
-		 @author Ashwin Singh
 		 */
 		void update(std::string& s);
 		/*!
@@ -27,7 +26,6 @@ class Model {
  		 Return response stored in data member api_out string
 		 @param None
 		 @return Response string api_out
-		 @author Ashwin Singh
 		 */
 		std::string& show_out(void);
 	private:

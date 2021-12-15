@@ -32,7 +32,6 @@ class mainwindow : public QMainWindow {
  		 Initialize all button on-click handlers and trigger thread to fetch sensor readings continously in background
 		 @param Addresses of the button and its label
 		 @return None
-		 @author Ashwin Singh, Ashvinder Suri
 		 */
 		explicit mainwindow(QWidget *parent=nullptr); 
 		/*!
@@ -40,7 +39,6 @@ class mainwindow : public QMainWindow {
  		 Connect button to its label such that when the button is pressed, its label is sent as a string to the Model class to generate an API call & retrieve, show data for the UI
 		 @param Addresses of the button and its label
 		 @return None
-		 @author Ashwin Singh, Ashvinder Suri
 		 */
 		void make_connection(QPushButton *btn, QLabel *label);
 	
@@ -50,7 +48,6 @@ class mainwindow : public QMainWindow {
 		 Every 5 seconds when sensor readings updated and emitted from MotionSensorThread Class, onSensorReading receives resultant string indicating if motion detected or not
 		 @param String representing motion detection reading
 		 @return None
-		 @author Ashwin Singh
 		 */
 		void onSensorReading(std::string reading);
 	private:

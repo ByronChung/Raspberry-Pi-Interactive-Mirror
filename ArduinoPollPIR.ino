@@ -1,7 +1,6 @@
 /**
 @brief Setup event loop for Arduino used to manage wired connections, I/O, and serial data writing for transfer to Raspberry Pi
 Event loop polls Passive Infrared Sensor (PIR) data from Arduino digital output pin & sends it to serial output to Raspberry Pi
-@author: Ashwin Singh
 */
 
 //Pin Configuration for Arduino

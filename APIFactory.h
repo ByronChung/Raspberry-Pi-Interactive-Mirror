@@ -1,7 +1,6 @@
 /*!
  @brief API Factory to return types of API objects depending on what client requested
  Class uses string passed from button labels of UI to generate inherited API class objects (e.g. SpotifyAPI, WeatherAPI)
- @author Ashwin Singh 
  */
 
 

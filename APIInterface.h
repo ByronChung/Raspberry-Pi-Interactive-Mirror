@@ -1,7 +1,6 @@
 /*!
  @brief Interface to define general API object
  Different types of API objects implement interface (evident by pure virtual function); created to implement Factory design pattern and reduce coupling
- @author Ashwin Singh 
  */
  
 #ifndef API_INTERFACE_H

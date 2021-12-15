@@ -1,6 +1,5 @@
 /*!
  @brief Main function to initiate start of QApplication
- @author Ashwin Singh 
  */
 
 #include "mainwindow.h"

@@ -19,7 +19,6 @@ class TwitterAPI: public APIInterface {
 		@brief Initialize data member auth_request for later use with Twitter API authentication
 		@param none
 		@return none
-		@author Byron Chung, Pablo Ortega, Ashvinder Suri
 		*/
 		TwitterAPI();
 		~TwitterAPI() = default;
@@ -29,7 +28,6 @@ class TwitterAPI: public APIInterface {
 		Retrieve raw JSON response of recent tweet from Twitter API using cURL
 		@param None
 		@return None
-		@author Byron Chung, Pablo Ortega, Ashvinder Suri
 		*/
 		void getTweets();
         
@@ -38,7 +36,6 @@ class TwitterAPI: public APIInterface {
 		Store parse resonse in appropriate holder variable
 		@param None
 		@return None
-		@author Byron Chung, Pablo Ortega, Ashvinder Suri
 		*/
 		void parseTweet();
 		
@@ -47,7 +44,6 @@ class TwitterAPI: public APIInterface {
 		Use auth_request with cURL HTTP request to the Twitter access URL, then call other functions to retrieve twitter data & store
 		@param None
 		@return None
-		@author Byron Chung, Pablo Ortega, Ashvinder Suri
 		*/
 		std::string& call() override;
 	private:

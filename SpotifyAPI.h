@@ -19,7 +19,6 @@ class SpotifyAPI: public APIInterface{
  		 Initialize the data members to be used later for Spotify API authentication & access
 		 @param None
 		 @return None
-		 @author Ashwin Singh
 		 */
 		SpotifyAPI();
 		~SpotifyAPI() = default;
@@ -28,7 +27,6 @@ class SpotifyAPI: public APIInterface{
  		 Convert JSON response into a dictionary, parse response, retrieve access token & store
 		 @param Raw authentication response string
 		 @return None
-		 @author Ashwin Singh
 		 */
 		void parseAccessToken(std::string &s);
 		/*!
@@ -36,7 +34,6 @@ class SpotifyAPI: public APIInterface{
  		 Retrieve raw JSON response of recently played song data from Spotify API using cURL, store
 		 @param None
 		 @return None
-		 @author Ashwin Singh
 		 */
 		void getRecentlyPlayedTracks();
 		/*!
@@ -44,7 +41,6 @@ class SpotifyAPI: public APIInterface{
  		 Parse raw JSON response from Spotify API using dictionary, retrieve recently played songs & store
 		 @param None
 		 @return None
-		 @author Ashwin Singh
 		 */
 		void parseRecentTracks();
 		/*!
@@ -52,7 +48,6 @@ class SpotifyAPI: public APIInterface{
  		 Use refresh token generated to retrieve access token using cURL HTTP request to the Spotify access URL, then call other functions to retrieve song data & store
 		 @param None
 		 @return Formatted string of recently played songs
-		 @author Ashwin Singh
 		 */
 		std::string& call() override;
 	private:

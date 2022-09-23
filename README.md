@@ -1,3 +1,5 @@
+#Raspberry Pi Interactive Mirror
+
 Display for a smart mirror created using Qt in C++. Display able to show:
 
 Recently played songs through integration with the Spotify API by regenerating refresh tokens upon GET requests

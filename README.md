@@ -1,4 +1,4 @@
-#Raspberry Pi Interactive Mirror#
+# Raspberry Pi Interactive Mirror #
 
 Display for a smart mirror created using Qt in C++. Display able to show:
 
